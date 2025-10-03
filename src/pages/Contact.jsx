@@ -38,17 +38,19 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Visit Us",
-      details: ["123 Education Street", "Learning District", "City, State 12345"],
+      details: [
+        "Opposite Pohru Crossing Nowgam Bypass, NH 1, Srinagar, J&K-190015",
+      ],
     },
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+1 (555) 123-4567", "+1 (555) 123-4568"],
+      details: ["9103997281"],
     },
     {
       icon: Mail,
       title: "Email Us",
-      details: ["info@genagogy.edu", "admissions@genagogy.edu"],
+      details: ["contactgenagogy@gmail.com"],
     },
     {
       icon: Clock,
@@ -196,7 +198,7 @@ const Contact = () => {
                     size="sm"
                     className="text-primary bg-primary-foreground hover:bg-primary-foreground/90"
                   >
-                    Call Now: (555) 123-4567
+                    Call Now: 9103997281
                   </Button>
                 </CardContent>
               </Card>
@@ -220,8 +222,7 @@ const Contact = () => {
                   <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
                   <h3 className="text-xl font-semibold text-foreground mb-2">Interactive Map</h3>
                   <p className="text-muted-foreground">
-                    123 Education Street, Learning District<br />
-                    City, State 12345
+                    Opposite Pohru Crossing Nowgam Bypass, NH 1, Srinagar, J&K-190015
                   </p>
                   <Button variant="outline" className="mt-4">
                     Get Directions

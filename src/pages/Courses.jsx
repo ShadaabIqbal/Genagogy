@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Clock, Users, Award, ArrowRight } from "lucide-react";
+import { Clock, Users, Award } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -9,69 +9,134 @@ const Courses = () => {
   const courses = [
     {
       id: 1,
-      title: "Full Stack Web Development",
-      duration: "6 months",
-      students: 45,
-      level: "Beginner to Advanced",
-      description: "Master modern web development with React, Node.js, and databases. Build real-world projects from scratch.",
-      skills: ["React", "Node.js", "MongoDB", "JavaScript", "HTML/CSS"],
-      fee: "$1,299",
-      image: "/course-placeholder.svg"
-    },
-    {
-      id: 2,
-      title: "Data Science & Analytics",
-      duration: "8 months",
-      students: 32,
-      level: "Intermediate",
-      description: "Learn data analysis, machine learning, and visualization with Python and industry tools.",
-      skills: ["Python", "Pandas", "Machine Learning", "Tableau", "SQL"],
-      fee: "$1,599",
-      image: "/course-placeholder.svg"
-    },
-    {
-      id: 3,
-      title: "Digital Marketing Mastery",
+      title: "Digital Marketing",
       duration: "4 months",
       students: 58,
       level: "All Levels",
-      description: "Complete digital marketing course covering SEO, social media, PPC, and analytics.",
-      skills: ["SEO", "Google Ads", "Social Media", "Analytics", "Content Marketing"],
-      fee: "$899",
-      image: "/course-placeholder.svg"
+      description: "Learn end-to-end digital marketing: SEO, SEM, social media, content, and analytics.",
+      skills: ["SEO", "Google Ads", "Social Media", "Analytics", "Content"],
+      image: "/course-placeholder.svg",
+      syllabus: [
+        { module: "Module 1: Marketing Foundations", topics: ["Digital landscape", "Buyer personas", "Customer journey", "Brand positioning"] },
+        { module: "Module 2: SEO", topics: ["Keyword research", "On-page SEO", "Technical SEO", "Link building"] },
+        { module: "Module 3: Paid Advertising", topics: ["Google Ads", "Facebook/Instagram Ads", "Campaign structure", "A/B testing"] },
+        { module: "Module 4: Content & Social", topics: ["Content strategy", "Editorial calendars", "Social media management", "Influencer marketing"] },
+        { module: "Module 5: Analytics & Reporting", topics: ["Google Analytics", "UTM tracking", "Dashboards", "Attribution basics"] }
+      ]
+    },
+    {
+      id: 2,
+      title: "Video Editing",
+      duration: "3 months",
+      students: 40,
+      level: "Beginner to Intermediate",
+      description: "Edit compelling videos with professional workflows, audio, motion, and color grading.",
+      skills: ["Editing", "Color", "Audio", "Motion Graphics", "Storytelling"],
+      image: "/course-placeholder.svg",
+      syllabus: [
+        { module: "Module 1: Editing Basics", topics: ["Non-linear editing", "Timelines", "Cuts & transitions", "Project setup"] },
+        { module: "Module 2: Audio & Music", topics: ["Voice cleanup", "Noise reduction", "Sound design", "Music licensing"] },
+        { module: "Module 3: Motion & Titles", topics: ["Keyframing", "Text animation", "Lower thirds", "Intro/outro"] },
+        { module: "Module 4: Color", topics: ["Color correction", "Color grading", "Scopes", "LUTs"] },
+        { module: "Module 5: Delivery", topics: ["Export settings", "Codecs", "Delivery formats", "Publishing workflows"] }
+      ]
+    },
+    {
+      id: 3,
+      title: "Graphic Designing",
+      duration: "4 months",
+      students: 44,
+      level: "All Levels",
+      description: "Master design fundamentals, branding, and modern tools for print and digital.",
+      skills: ["Typography", "Layout", "Branding", "Illustration", "Figma/Adobe"],
+      image: "/course-placeholder.svg",
+      syllabus: [
+        { module: "Module 1: Design Principles", topics: ["Color theory", "Typography", "Composition", "Hierarchy"] },
+        { module: "Module 2: Tools & Workflows", topics: ["Figma", "Photoshop", "Illustrator", "Asset management"] },
+        { module: "Module 3: Branding", topics: ["Brand strategy", "Logos", "Design systems", "Style guides"] },
+        { module: "Module 4: Print & Digital", topics: ["Layouts", "Mockups", "Responsive design", "Export specs"] },
+        { module: "Module 5: Portfolio", topics: ["Case studies", "Presentation", "Feedback loops", "Polishing"] }
+      ]
     },
     {
       id: 4,
-      title: "UI/UX Design Professional",
-      duration: "5 months",
-      students: 28,
-      level: "Beginner to Intermediate",
-      description: "Design beautiful, user-friendly interfaces with industry-standard tools and methodologies.",
-      skills: ["Figma", "Adobe XD", "User Research", "Prototyping", "Design Systems"],
-      fee: "$1,199",
-      image: "/course-placeholder.svg"
+      title: "Web Development (MERN)",
+      duration: "6 months",
+      students: 45,
+      level: "Beginner to Advanced",
+      description: "Build full-stack web apps with MongoDB, Express, React, and Node.js.",
+      skills: ["React", "Node.js", "MongoDB", "Express", "Git"],
+      image: "/course-placeholder.svg",
+      syllabus: [
+        { module: "Module 1: Frontend Fundamentals", topics: ["HTML5", "CSS3", "JavaScript ES6+", "Responsive design"] },
+        { module: "Module 2: React", topics: ["Components", "State & props", "Hooks", "Routing"] },
+        { module: "Module 3: Backend with Node.js", topics: ["Express APIs", "Auth basics", "Validation", "Error handling"] },
+        { module: "Module 4: Database & Deployment", topics: ["MongoDB", "Mongoose", "Env & config", "Deployment"] }
+      ]
     },
     {
       id: 5,
-      title: "Cloud Computing & DevOps",
+      title: "Data Science",
       duration: "6 months",
-      students: 24,
-      level: "Intermediate to Advanced",
-      description: "Master cloud platforms, containerization, and DevOps practices for modern infrastructure.",
-      skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Linux"],
-      fee: "$1,399",
-      image: "/course-placeholder.svg"
+      students: 36,
+      level: "Intermediate",
+      description: "Apply statistics, Python, and ML to analyze data and build models.",
+      skills: ["Python", "Pandas", "NumPy", "ML", "Visualization"],
+      image: "/course-placeholder.svg",
+      syllabus: [
+        { module: "Module 1: Python for Data", topics: ["Data types", "Pandas", "EDA", "Visualization"] },
+        { module: "Module 2: Statistics", topics: ["Probability", "Hypothesis testing", "Regression", "Sampling"] },
+        { module: "Module 3: Machine Learning", topics: ["Supervised", "Unsupervised", "Model evaluation", "Pipelines"] },
+        { module: "Module 4: Projects", topics: ["Feature engineering", "Model tuning", "Reporting", "Best practices"] }
+      ]
     },
     {
       id: 6,
-      title: "Mobile App Development",
-      duration: "7 months",
-      students: 35,
-      level: "Intermediate",
-      description: "Build native and cross-platform mobile applications for iOS and Android.",
-      skills: ["React Native", "Flutter", "iOS", "Android", "Firebase"],
-      fee: "$1,499",
-      image: "/course-placeholder.svg"
+      title: "Data Analytics",
+      duration: "5 months",
+      students: 38,
+      level: "Beginner to Intermediate",
+      description: "Turn raw data into insights using SQL, BI tools, and dashboards.",
+      skills: ["SQL", "Excel", "Tableau/Power BI", "ETL", "Dashboards"],
+      image: "/course-placeholder.svg",
+      syllabus: [
+        { module: "Module 1: Foundations", topics: ["Analytical thinking", "KPIs", "Data sources", "Data quality"] },
+        { module: "Module 2: SQL", topics: ["Joins", "Aggregations", "Window functions", "CTEs"] },
+        { module: "Module 3: BI & Visualization", topics: ["Tableau/Power BI", "Dashboards", "Storytelling", "Sharing"] },
+        { module: "Module 4: Analytics in Practice", topics: ["ETL basics", "Spreadsheets", "Reporting", "Case studies"] }
+      ]
+    },
+    {
+      id: 7,
+      title: "Professional Accounting",
+      duration: "6 months",
+      students: 30,
+      level: "All Levels",
+      description: "Core accounting principles, taxation, and tools for modern finance roles.",
+      skills: ["Bookkeeping", "Financial statements", "Tax basics", "Tally/Excel", "Audit"] ,
+      image: "/course-placeholder.svg",
+      syllabus: [
+        { module: "Module 1: Fundamentals", topics: ["Accounting cycle", "Double-entry", "Ledgers", "Trial balance"] },
+        { module: "Module 2: Financial Statements", topics: ["Income statement", "Balance sheet", "Cash flows", "Ratios"] },
+        { module: "Module 3: Tax & Compliance", topics: ["GST basics", "TDS", "Compliance", "Documentation"] },
+        { module: "Module 4: Tools & Audit", topics: ["Tally/Excel", "Bank reconciliation", "Payroll basics", "Internal audit"] }
+      ]
+    },
+    {
+      id: 8,
+      title: "Ethical Hacking and Cyber Security",
+      duration: "6 months",
+      students: 34,
+      level: "Beginner to Intermediate",
+      description: "Security fundamentals, network defense, and ethical hacking methodologies.",
+      skills: ["Networking", "Linux", "Security", "OWASP", "Tools"],
+      image: "/course-placeholder.svg",
+      syllabus: [
+        { module: "Module 1: Security Basics", topics: ["CIA triad", "Threats", "Vulnerabilities", "Risk"] },
+        { module: "Module 2: Networks & Linux", topics: ["TCP/IP", "Wireshark", "Linux essentials", "Permissions"] },
+        { module: "Module 3: Web Security", topics: ["OWASP Top 10", "Recon", "Scanning", "Exploitation basics"] },
+        { module: "Module 4: Defense & Practice", topics: ["Hardening", "Monitoring", "Reporting", "Responsible disclosure"] }
+      ]
     }
   ];
 
@@ -139,16 +204,6 @@ const Courses = () => {
                 
                 <CardHeader>
                   <CardTitle className="text-xl text-foreground">{course.title}</CardTitle>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                    <div className="flex items-center">
-                      <Clock className="h-4 w-4 mr-1" />
-                      {course.duration}
-                    </div>
-                    <div className="flex items-center">
-                      <Users className="h-4 w-4 mr-1" />
-                      {course.students} enrolled
-                    </div>
-                  </div>
                 </CardHeader>
                 
                 <CardContent className="space-y-4">
@@ -156,28 +211,9 @@ const Courses = () => {
                     {course.description}
                   </p>
                   
-                  <div className="space-y-2">
-                    <p className="text-sm font-medium text-foreground">Key Skills:</p>
-                    <div className="flex flex-wrap gap-2">
-                      {course.skills.slice(0, 3).map((skill) => (
-                        <Badge key={skill} variant="secondary" className="text-xs">
-                          {skill}
-                        </Badge>
-                      ))}
-                      {course.skills.length > 3 && (
-                        <Badge variant="outline" className="text-xs">
-                          +{course.skills.length - 3} more
-                        </Badge>
-                      )}
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center justify-between pt-4 border-t border-border">
-                    <div className="text-2xl font-bold text-primary">{course.fee}</div>
-                    <Button asChild size="sm">
-                      <Link to={`/courses/${course.id}`}>
-                        View Details <ArrowRight className="ml-1 h-4 w-4" />
-                      </Link>
+                  <div className="pt-4">
+                    <Button asChild size="sm" className="w-full sm:w-auto">
+                      <Link to={`/courses/${course.id}`}>View Details</Link>
                     </Button>
                   </div>
                 </CardContent>

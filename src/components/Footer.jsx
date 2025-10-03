@@ -79,18 +79,16 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="h-4 w-4 text-primary-foreground/60 mt-0.5" />
                 <span className="text-primary-foreground/80 text-sm">
-                  123 Education Street<br />
-                  Learning District<br />
-                  City, State 12345
+                  Opposite Pohru Crossing Nowgam Bypass, NH 1, Srinagar, J&K-190015
                 </span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-primary-foreground/60" />
-                <span className="text-primary-foreground/80 text-sm">+1 (555) 123-4567</span>
+                <span className="text-primary-foreground/80 text-sm">9103997281</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-primary-foreground/60" />
-                <span className="text-primary-foreground/80 text-sm">info@genagogy.edu</span>
+                <span className="text-primary-foreground/80 text-sm">contactgenagogy@gmail.com</span>
               </div>
             </div>
           </div>

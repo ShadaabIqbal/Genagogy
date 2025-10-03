@@ -1,4 +1,5 @@
 import { Target, Eye, Users, Award, BookOpen, Heart } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import ImageWithFallback from "@/components/ImageWithFallback";
 
@@ -104,24 +105,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-primary text-primary-foreground p-6 rounded-lg text-center animate-fade-in" style={{ animationDelay: "0.3s" }}>
-                <div className="text-3xl font-bold mb-2">500+</div>
-                <div className="text-sm">Graduates Placed</div>
-              </div>
-              <div className="bg-success text-success-foreground p-6 rounded-lg text-center animate-fade-in" style={{ animationDelay: "0.4s" }}>
-                <div className="text-3xl font-bold mb-2">95%</div>
-                <div className="text-sm">Success Rate</div>
-              </div>
-              <div className="bg-accent text-accent-foreground p-6 rounded-lg text-center animate-fade-in" style={{ animationDelay: "0.5s" }}>
-                <div className="text-3xl font-bold mb-2">20+</div>
-                <div className="text-sm">Expert Mentors</div>
-              </div>
-              <div className="bg-secondary text-secondary-foreground p-6 rounded-lg text-center animate-fade-in" style={{ animationDelay: "0.6s" }}>
-                <div className="text-3xl font-bold mb-2">10+</div>
-                <div className="text-sm">Years Experience</div>
-              </div>
-            </div>
+            <StatsSection />
           </div>
         </div>
       </section>
@@ -152,35 +136,34 @@ const About = () => {
         </div>
       </section>
 
-      {/* Faculty Section */}
+      {/* Director's Profile */}
       <section className="section-padding bg-background">
         <div className="container-max">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Meet Our Expert Faculty</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Learn from industry veterans who bring real-world experience into the classroom.
-            </p>
+            <h2 className="text-3xl font-bold text-foreground mb-4">Message from Our Director</h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {faculty.map((member, index) => (
-              <Card key={index} className="card-hover text-center animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardContent className="p-6">
-                  <div className="mb-4">
+          <div className="flex justify-center">
+            <Card className="card-hover w-full max-w-5xl animate-fade-in">
+              <CardContent className="p-8">
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                  <div className="flex justify-center">
                     <ImageWithFallback
-                      src={member.image}
-                      alt={member.name}
-                      className="w-24 h-24 rounded-full mx-auto object-cover shadow-medium"
+                      src="/gaurav_batra.webp"
+                      alt="Center Director"
+                      className="w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-lg object-cover shadow-medium"
                       fallback="/placeholder.svg"
                     />
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-1">{member.name}</h3>
-                  <p className="text-primary font-medium mb-2">{member.role}</p>
-                  <p className="text-sm text-muted-foreground mb-2">{member.specialization}</p>
-                  <p className="text-xs text-muted-foreground">{member.experience}</p>
-                </CardContent>
-              </Card>
-            ))}
+                  <div className="text-center md:text-left">
+                    <h3 className="text-2xl font-semibold text-foreground mb-3">Center Director</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      "As the Center Director of Genagogy Institute, I would like to express my sincere gratitude to our partner, Technoglobe, for their constant support, expert guidance, and valuable resources. Through their structured training programs, updated curriculum, and strong placement support, we at Genagogy have been able to deliver quality education and instill confidence in our students. Together, we have created a positive learning environment that focuses on skill development and career readiness. It is a privilege to be part of the Technoglobe network, and at Genagogy, we remain committed to empowering youth in Srinagar with industry-relevant training and career opportunities."
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -215,3 +198,98 @@ const About = () => {
 };
 
 export default About;
+ 
+// Animated stats section
+const StatsSection = () => {
+  const containerRef = useRef(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const [values, setValues] = useState({
+    years: 0,
+    courses: 0,
+    companies: 0,
+    students: 0,
+    locations: 0
+  });
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [hasAnimated]);
+
+  useEffect(() => {
+    if (!hasAnimated) return;
+
+    const target = {
+      years: 25,
+      courses: 300,
+      companies: 500,
+      students: 200000,
+      locations: 100
+    };
+
+    const durationMs = 1200; // quick professional count-up
+    const frameMs = 20;
+    const steps = Math.ceil(durationMs / frameMs);
+
+    let currentStep = 0;
+    const interval = setInterval(() => {
+      currentStep += 1;
+      const progress = Math.min(currentStep / steps, 1);
+
+      setValues({
+        years: Math.floor(target.years * progress),
+        courses: Math.floor(target.courses * progress),
+        companies: Math.floor(target.companies * progress),
+        students: Math.floor(target.students * progress),
+        locations: Math.floor(target.locations * progress)
+      });
+
+      if (progress === 1) clearInterval(interval);
+    }, frameMs);
+
+    return () => clearInterval(interval);
+  }, [hasAnimated]);
+
+  const formatNumber = (n) => {
+    return n.toLocaleString();
+  };
+
+  return (
+    <div ref={containerRef} className="grid grid-cols-2 gap-6">
+      <div className="bg-primary text-primary-foreground p-6 rounded-lg text-center animate-fade-in" style={{ animationDelay: "0.3s" }}>
+        <div className="text-3xl font-bold mb-2">{values.years}+ </div>
+        <div className="text-sm">Years Of Excellence</div>
+      </div>
+      <div className="bg-success text-success-foreground p-6 rounded-lg text-center animate-fade-in" style={{ animationDelay: "0.4s" }}>
+        <div className="text-3xl font-bold mb-2">{formatNumber(values.courses)}+ </div>
+        <div className="text-sm">Available Career Courses with AI Integration</div>
+      </div>
+      <div className="bg-accent text-accent-foreground p-6 rounded-lg text-center animate-fade-in" style={{ animationDelay: "0.5s" }}>
+        <div className="text-3xl font-bold mb-2">{formatNumber(values.companies)}+ </div>
+        <div className="text-sm">Tie-Up Companies For Placement</div>
+      </div>
+      <div className="bg-secondary text-secondary-foreground p-6 rounded-lg text-center animate-fade-in" style={{ animationDelay: "0.6s" }}>
+        <div className="text-3xl font-bold mb-2">{formatNumber(values.students)}+ </div>
+        <div className="text-sm">Trained & Placed Students</div>
+      </div>
+      <div className="bg-muted text-foreground p-6 rounded-lg text-center animate-fade-in" style={{ animationDelay: "0.7s" }}>
+        <div className="text-3xl font-bold mb-2">{values.locations}+ </div>
+        <div className="text-sm">Global Locations</div>
+      </div>
+    </div>
+  );
+};

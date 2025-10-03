@@ -157,8 +157,8 @@ const StaffLogin = () => {
         <div className="mt-6 text-center">
           <p className="text-sm text-muted-foreground">
             Need help? Contact{" "}
-            <a href="mailto:support@genagogy.edu" className="text-primary hover:underline">
-              support@genagogy.edu
+            <a href="mailto:contactgenagogy@gmail.com" className="text-primary hover:underline">
+              contactgenagogy@gmail.com
             </a>
           </p>
         </div>
