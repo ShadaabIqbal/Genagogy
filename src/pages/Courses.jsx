@@ -3,6 +3,7 @@ import { Clock, Users, Award, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import ImageWithFallback from "@/components/ImageWithFallback";
 
 const Courses = () => {
   const courses = [
@@ -15,7 +16,7 @@ const Courses = () => {
       description: "Master modern web development with React, Node.js, and databases. Build real-world projects from scratch.",
       skills: ["React", "Node.js", "MongoDB", "JavaScript", "HTML/CSS"],
       fee: "$1,299",
-      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&h=250&fit=crop"
+      image: "/course-placeholder.svg"
     },
     {
       id: 2,
@@ -26,7 +27,7 @@ const Courses = () => {
       description: "Learn data analysis, machine learning, and visualization with Python and industry tools.",
       skills: ["Python", "Pandas", "Machine Learning", "Tableau", "SQL"],
       fee: "$1,599",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop"
+      image: "/course-placeholder.svg"
     },
     {
       id: 3,
@@ -37,7 +38,7 @@ const Courses = () => {
       description: "Complete digital marketing course covering SEO, social media, PPC, and analytics.",
       skills: ["SEO", "Google Ads", "Social Media", "Analytics", "Content Marketing"],
       fee: "$899",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop"
+      image: "/course-placeholder.svg"
     },
     {
       id: 4,
@@ -48,7 +49,7 @@ const Courses = () => {
       description: "Design beautiful, user-friendly interfaces with industry-standard tools and methodologies.",
       skills: ["Figma", "Adobe XD", "User Research", "Prototyping", "Design Systems"],
       fee: "$1,199",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=250&fit=crop"
+      image: "/course-placeholder.svg"
     },
     {
       id: 5,
@@ -59,7 +60,7 @@ const Courses = () => {
       description: "Master cloud platforms, containerization, and DevOps practices for modern infrastructure.",
       skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Linux"],
       fee: "$1,399",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop"
+      image: "/course-placeholder.svg"
     },
     {
       id: 6,
@@ -70,7 +71,7 @@ const Courses = () => {
       description: "Build native and cross-platform mobile applications for iOS and Android.",
       skills: ["React Native", "Flutter", "iOS", "Android", "Firebase"],
       fee: "$1,499",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop"
+      image: "/course-placeholder.svg"
     }
   ];
 
@@ -123,10 +124,11 @@ const Courses = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <ImageWithFallback
                     src={course.image}
                     alt={course.title}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    fallback="/placeholder.svg"
                   />
                   <div className="absolute top-4 right-4">
                     <Badge className={getLevelColor(course.level)}>

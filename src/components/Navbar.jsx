@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import ImageWithFallback from "@/components/ImageWithFallback";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,10 +23,11 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 hover:opacity-90 transition-opacity duration-200">
-            <img 
+            <ImageWithFallback 
               src="/logo.svg" 
               alt="Genagogy Logo" 
               className="h-16 w-auto"
+              fallback="/placeholder.svg"
             />
           </Link>
 

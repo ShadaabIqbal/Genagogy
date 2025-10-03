@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { Clock, Users, Award, CheckCircle, Calendar, DollarSign, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ImageWithFallback from "@/components/ImageWithFallback";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -19,7 +20,7 @@ const CourseDetails = () => {
       description: "Master modern web development with React, Node.js, and databases. Build real-world projects from scratch and become a complete full-stack developer ready for the industry.",
       skills: ["React", "Node.js", "MongoDB", "JavaScript", "HTML/CSS", "Express.js", "Git", "REST APIs"],
       fee: "$1,299",
-      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&h=400&fit=crop",
+      image: "/course-placeholder.svg",
       highlights: [
         "Build 5+ real-world projects",
         "1-on-1 mentorship sessions",
@@ -140,10 +141,11 @@ const CourseDetails = () => {
             </div>
 
             <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <img
+              <ImageWithFallback
                 src={course.image}
                 alt={course.title}
                 className="w-full rounded-lg shadow-large"
+                fallback="/course-placeholder.svg"
               />
             </div>
           </div>

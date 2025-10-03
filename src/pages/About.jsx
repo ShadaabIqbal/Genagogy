@@ -1,5 +1,6 @@
 import { Target, Eye, Users, Award, BookOpen, Heart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import ImageWithFallback from "@/components/ImageWithFallback";
 
 const About = () => {
   const faculty = [
@@ -8,28 +9,28 @@ const About = () => {
       role: "Director & Lead Instructor",
       specialization: "Full Stack Development",
       experience: "15+ years in software development",
-      image: "https://images.unsplash.com/photo-1494790108755-2616c4e1a4f6?w=300&h=300&fit=crop&crop=face"
+      image: "/faculty-placeholder.svg"
     },
     {
       name: "Prof. Michael Chen",
       role: "Senior Data Science Instructor",
       specialization: "Machine Learning & AI",
       experience: "12+ years in data analytics",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face"
+      image: "/faculty-placeholder.svg"
     },
     {
       name: "Emma Davis",
       role: "UI/UX Design Lead",
       specialization: "Product Design",
       experience: "10+ years in design thinking",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face"
+      image: "/faculty-placeholder.svg"
     },
     {
       name: "James Wilson",
       role: "Digital Marketing Expert",
       specialization: "Growth Marketing",
       experience: "8+ years in digital strategy",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face"
+      image: "/faculty-placeholder.svg"
     }
   ];
 
@@ -166,10 +167,11 @@ const About = () => {
               <Card key={index} className="card-hover text-center animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardContent className="p-6">
                   <div className="mb-4">
-                    <img
+                    <ImageWithFallback
                       src={member.image}
                       alt={member.name}
                       className="w-24 h-24 rounded-full mx-auto object-cover shadow-medium"
+                      fallback="/placeholder.svg"
                     />
                   </div>
                   <h3 className="text-lg font-semibold text-foreground mb-1">{member.name}</h3>
