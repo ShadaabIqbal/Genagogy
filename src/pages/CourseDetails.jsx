@@ -19,7 +19,7 @@ const CourseDetails = () => {
       level: "All Levels",
       description: "Learn end-to-end digital marketing: SEO, SEM, social media, content, and analytics.",
       skills: ["SEO", "Google Ads", "Social Media", "Analytics", "Content"],
-      image: "/course-placeholder.svg",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80",
       highlights: [
         "Hands-on campaign practice",
         "Case studies and dashboards",
@@ -36,7 +36,7 @@ const CourseDetails = () => {
       prerequisites: ["Basic computer literacy"],
       schedule: "Mon, Wed, Fri - 7:00 PM to 9:00 PM",
       nextBatch: "November 15, 2025",
-      instructor: "To be announced"
+      instructor: "Meer Aasif"
     },
     "2": {
       id: 2,
@@ -46,7 +46,7 @@ const CourseDetails = () => {
       level: "Beginner to Intermediate",
       description: "Edit compelling videos with professional workflows, audio, motion, and color grading.",
       skills: ["Editing", "Color", "Audio", "Motion Graphics", "Storytelling"],
-      image: "/course-placeholder.svg",
+      image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       highlights: ["Practical editing labs", "Audio and color workflows", "Story-first approach"],
       curriculum: [
         { module: "Module 1: Editing Basics", topics: ["Non-linear editing", "Timelines", "Cuts & transitions", "Project setup"] },
@@ -58,7 +58,7 @@ const CourseDetails = () => {
       prerequisites: ["Basic computer literacy"],
       schedule: "Tue, Thu - 6:00 PM to 8:00 PM",
       nextBatch: "November 25, 2025",
-      instructor: "To be announced"
+      instructor: "Javid Khan"
     },
     "3": {
       id: 3,
@@ -68,7 +68,7 @@ const CourseDetails = () => {
       level: "All Levels",
       description: "Master design fundamentals, branding, and modern tools for print and digital.",
       skills: ["Typography", "Layout", "Branding", "Illustration", "Figma/Adobe"],
-      image: "/course-placeholder.svg",
+      image: "https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80",
       highlights: ["Real-world briefs", "Branding systems", "Portfolio development"],
       curriculum: [
         { module: "Module 1: Design Principles", topics: ["Color theory", "Typography", "Composition", "Hierarchy"] },
@@ -80,7 +80,7 @@ const CourseDetails = () => {
       prerequisites: ["Basic computer literacy"],
       schedule: "Weekend batches",
       nextBatch: "December 10, 2025",
-      instructor: "To be announced"
+      instructor: "Javid Khan"
     },
     "4": {
       id: 4,
@@ -90,7 +90,7 @@ const CourseDetails = () => {
       level: "Beginner to Advanced",
       description: "Build full-stack web apps with MongoDB, Express, React, and Node.js.",
       skills: ["React", "Node.js", "MongoDB", "Express", "Git"],
-      image: "/course-placeholder.svg",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
       highlights: ["Hands-on projects", "Modern tooling", "Deployment workflows"],
       curriculum: [
         { module: "Module 1: Frontend Fundamentals", topics: ["HTML5", "CSS3", "JavaScript ES6+", "Responsive design"] },
@@ -101,7 +101,7 @@ const CourseDetails = () => {
       prerequisites: ["Basic computer literacy"],
       schedule: "Mon, Wed, Fri - 7:00 PM to 9:00 PM",
       nextBatch: "November 20, 2025",
-      instructor: "To be announced"
+      instructor: "Shadaab Iqbal"
     },
     "5": {
       id: 5,
@@ -111,7 +111,7 @@ const CourseDetails = () => {
       level: "Intermediate",
       description: "Apply statistics, Python, and ML to analyze data and build models.",
       skills: ["Python", "Pandas", "NumPy", "ML", "Visualization"],
-      image: "/course-placeholder.svg",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       highlights: ["Model building", "EDA projects", "Best practices"],
       curriculum: [
         { module: "Module 1: Python for Data", topics: ["Data types", "Pandas", "EDA", "Visualization"] },
@@ -122,7 +122,7 @@ const CourseDetails = () => {
       prerequisites: ["Basic Python familiarity"],
       schedule: "Tue, Thu - 7:00 PM to 9:00 PM",
       nextBatch: "December 1, 2025",
-      instructor: "To be announced"
+      instructor: "Sidrat Khan"
     },
     "6": {
       id: 6,
@@ -132,7 +132,7 @@ const CourseDetails = () => {
       level: "Beginner to Intermediate",
       description: "Turn raw data into insights using SQL, BI tools, and dashboards.",
       skills: ["SQL", "Excel", "Tableau/Power BI", "ETL", "Dashboards"],
-      image: "/course-placeholder.svg",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       highlights: ["Business-focused analysis", "Dashboarding", "Case studies"],
       curriculum: [
         { module: "Module 1: Foundations", topics: ["Analytical thinking", "KPIs", "Data sources", "Data quality"] },
@@ -143,7 +143,7 @@ const CourseDetails = () => {
       prerequisites: ["Basic computer literacy"],
       schedule: "Weekend batches",
       nextBatch: "December 12, 2025",
-      instructor: "To be announced"
+      instructor: "Sidrat Khan"
     },
     "7": {
       id: 7,
@@ -153,7 +153,7 @@ const CourseDetails = () => {
       level: "All Levels",
       description: "Core accounting principles, taxation, and tools for modern finance roles.",
       skills: ["Bookkeeping", "Financial statements", "Tax basics", "Tally/Excel", "Audit"],
-      image: "/course-placeholder.svg",
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2011&q=80",
       highlights: ["Practical ledger work", "Compliance basics", "Tools training"],
       curriculum: [
         { module: "Module 1: Fundamentals", topics: ["Accounting cycle", "Double-entry", "Ledgers", "Trial balance"] },
@@ -174,7 +174,7 @@ const CourseDetails = () => {
       level: "Beginner to Intermediate",
       description: "Security fundamentals, network defense, and ethical hacking methodologies.",
       skills: ["Networking", "Linux", "Security", "OWASP", "Tools"],
-      image: "/course-placeholder.svg",
+      image: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
       highlights: ["Lab-based practice", "OWASP coverage", "Defensive hardening"],
       curriculum: [
         { module: "Module 1: Security Basics", topics: ["CIA triad", "Threats", "Vulnerabilities", "Risk"] },

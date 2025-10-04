@@ -209,29 +209,39 @@ const Contact = () => {
 
       {/* Map Section */}
       <section className="section-padding bg-muted">
-        <div className="container-max">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Find Us</h2>
-            <p className="text-muted-foreground">Visit our campus and experience our learning environment</p>
-          </div>
-          
-          <div className="bg-card rounded-lg shadow-medium overflow-hidden animate-fade-in">
-            <div className="aspect-video bg-gradient-to-br from-primary-light to-accent">
-              <div className="h-full flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Interactive Map</h3>
-                  <p className="text-muted-foreground">
-                    Opposite Pohru Crossing Nowgam Bypass, NH 1, Srinagar, J&K-190015
-                  </p>
-                  <Button variant="outline" className="mt-4">
-                    Get Directions
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
+       <div className="container-max grid md:grid-cols-2 gap-8">
+        
+        {/* Contact Info */}
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold">Visit Us</h2>
+          <p className="text-gray-600">
+            Our institute is located inside <strong>Vitasta School of Law and Humanities</strong>, 
+            Opposite Pohru Crossing, Nowgam Bypass, Srinagar, J&K - 190015
+          </p>
+          <a
+            href="https://www.google.com/maps/dir//2RGJ%2BVRC+Vitasta+School+of+Law+and+Humanities,+Pohru+Crossing+Nowgam+Bye+Pass,+NH+1,+A,+Nowgam,+Srinagar,+Jammu+and+Kashmir+190015/@34.0272014,74.829342,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x38e18ef48a66c6a5:0x33ccf3bb0e71f387!2m2!1d74.8319608!2d34.0271714!3e0?entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg shadow hover:bg-primary/90 transition"
+          >
+            <MapPin className="mr-2 h-5 w-5" />
+            Get Directions
+          </a>
         </div>
+
+        {/* Google Map Embed */}
+        <div className="rounded-lg overflow-hidden shadow">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.6497085374785!2d74.82934197454964!3d34.027201419054215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e18ef48a66c6a5%3A0x33ccf3bb0e71f387!2sVitasta%20School%20of%20Law%20and%20Humanities!5e0!3m2!1sen!2sin!4v1759567511410!5m2!1sen!2sin"
+            width="100%"
+            height="350"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
       </section>
 
       {/* FAQ Section */}

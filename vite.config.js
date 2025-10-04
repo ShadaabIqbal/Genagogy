@@ -1,3 +1,21 @@
+// import { defineConfig } from "vite";
+// import react from "@vitejs/plugin-react-swc";
+// import path from "path";
+
+// // https://vitejs.dev/config/
+// export default defineConfig(() => ({
+//   server: {
+//     host: "::",
+//     port: 8080,
+//   },
+//   plugins: [react()],
+//   resolve: {
+//     alias: {
+//       "@": path.resolve(import.meta.dirname, "./src"),
+//     },
+//   },
+// }));
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -7,11 +25,17 @@ export default defineConfig(() => ({
   server: {
     host: "::",
     port: 8080,
+    // Add this to allow your ngrok URL
+    allowedHosts: [
+      "localhost",
+      "127.0.0.1",
+      "unreadable-annetta-judicious.ngrok-free.dev", // replace with your actual ngrok host
+    ],
   },
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(import.meta.dirname, "./src"),
+      "@": path.resolve(__dirname, "src"),
     },
   },
 }));

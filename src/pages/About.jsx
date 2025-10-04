@@ -147,13 +147,16 @@ const About = () => {
             <Card className="card-hover w-full max-w-5xl animate-fade-in">
               <CardContent className="p-8">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
-                  <div className="flex justify-center">
+                  <div className="flex flex-col items-center">
                     <ImageWithFallback
                       src="/gaurav_batra.webp"
                       alt="Center Director"
                       className="w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-lg object-cover shadow-medium"
                       fallback="/placeholder.svg"
                     />
+                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mt-6 mb-2 text-center">
+                      Gaurav Gupta
+                    </h3>
                   </div>
                   <div className="text-center md:text-left">
                     <h3 className="text-2xl font-semibold text-foreground mb-3">Center Director</h3>

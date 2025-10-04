@@ -15,7 +15,7 @@ const Courses = () => {
       level: "All Levels",
       description: "Learn end-to-end digital marketing: SEO, SEM, social media, content, and analytics.",
       skills: ["SEO", "Google Ads", "Social Media", "Analytics", "Content"],
-      image: "/course-placeholder.svg",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80",
       syllabus: [
         { module: "Module 1: Marketing Foundations", topics: ["Digital landscape", "Buyer personas", "Customer journey", "Brand positioning"] },
         { module: "Module 2: SEO", topics: ["Keyword research", "On-page SEO", "Technical SEO", "Link building"] },
@@ -32,7 +32,7 @@ const Courses = () => {
       level: "Beginner to Intermediate",
       description: "Edit compelling videos with professional workflows, audio, motion, and color grading.",
       skills: ["Editing", "Color", "Audio", "Motion Graphics", "Storytelling"],
-      image: "/course-placeholder.svg",
+      image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       syllabus: [
         { module: "Module 1: Editing Basics", topics: ["Non-linear editing", "Timelines", "Cuts & transitions", "Project setup"] },
         { module: "Module 2: Audio & Music", topics: ["Voice cleanup", "Noise reduction", "Sound design", "Music licensing"] },
@@ -49,7 +49,7 @@ const Courses = () => {
       level: "All Levels",
       description: "Master design fundamentals, branding, and modern tools for print and digital.",
       skills: ["Typography", "Layout", "Branding", "Illustration", "Figma/Adobe"],
-      image: "/course-placeholder.svg",
+      image: "https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80",
       syllabus: [
         { module: "Module 1: Design Principles", topics: ["Color theory", "Typography", "Composition", "Hierarchy"] },
         { module: "Module 2: Tools & Workflows", topics: ["Figma", "Photoshop", "Illustrator", "Asset management"] },
@@ -66,7 +66,7 @@ const Courses = () => {
       level: "Beginner to Advanced",
       description: "Build full-stack web apps with MongoDB, Express, React, and Node.js.",
       skills: ["React", "Node.js", "MongoDB", "Express", "Git"],
-      image: "/course-placeholder.svg",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
       syllabus: [
         { module: "Module 1: Frontend Fundamentals", topics: ["HTML5", "CSS3", "JavaScript ES6+", "Responsive design"] },
         { module: "Module 2: React", topics: ["Components", "State & props", "Hooks", "Routing"] },
@@ -82,7 +82,7 @@ const Courses = () => {
       level: "Intermediate",
       description: "Apply statistics, Python, and ML to analyze data and build models.",
       skills: ["Python", "Pandas", "NumPy", "ML", "Visualization"],
-      image: "/course-placeholder.svg",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       syllabus: [
         { module: "Module 1: Python for Data", topics: ["Data types", "Pandas", "EDA", "Visualization"] },
         { module: "Module 2: Statistics", topics: ["Probability", "Hypothesis testing", "Regression", "Sampling"] },
@@ -98,7 +98,7 @@ const Courses = () => {
       level: "Beginner to Intermediate",
       description: "Turn raw data into insights using SQL, BI tools, and dashboards.",
       skills: ["SQL", "Excel", "Tableau/Power BI", "ETL", "Dashboards"],
-      image: "/course-placeholder.svg",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       syllabus: [
         { module: "Module 1: Foundations", topics: ["Analytical thinking", "KPIs", "Data sources", "Data quality"] },
         { module: "Module 2: SQL", topics: ["Joins", "Aggregations", "Window functions", "CTEs"] },
@@ -114,7 +114,7 @@ const Courses = () => {
       level: "All Levels",
       description: "Core accounting principles, taxation, and tools for modern finance roles.",
       skills: ["Bookkeeping", "Financial statements", "Tax basics", "Tally/Excel", "Audit"] ,
-      image: "/course-placeholder.svg",
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2011&q=80",
       syllabus: [
         { module: "Module 1: Fundamentals", topics: ["Accounting cycle", "Double-entry", "Ledgers", "Trial balance"] },
         { module: "Module 2: Financial Statements", topics: ["Income statement", "Balance sheet", "Cash flows", "Ratios"] },
@@ -130,7 +130,7 @@ const Courses = () => {
       level: "Beginner to Intermediate",
       description: "Security fundamentals, network defense, and ethical hacking methodologies.",
       skills: ["Networking", "Linux", "Security", "OWASP", "Tools"],
-      image: "/course-placeholder.svg",
+      image: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
       syllabus: [
         { module: "Module 1: Security Basics", topics: ["CIA triad", "Threats", "Vulnerabilities", "Risk"] },
         { module: "Module 2: Networks & Linux", topics: ["TCP/IP", "Wireshark", "Linux essentials", "Permissions"] },
