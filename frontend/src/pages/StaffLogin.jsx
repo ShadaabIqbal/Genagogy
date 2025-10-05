@@ -23,19 +23,25 @@ const StaffLogin = () => {
 
     // Simulate API call - in a real app, this would authenticate with a backend
     setTimeout(() => {
-      if (formData.email === "staff@genagogy.edu" && formData.password === "password") {
+      // Admin credentials -> redirect to Admin Dashboard
+      if (formData.email === "iqbalshadaab@gmail.com" && formData.password === "rimtiet118") {
+        localStorage.setItem("staffLoggedIn", "true");
+        localStorage.setItem("staffUser", JSON.stringify({
+          name: "Admin",
+          email: formData.email,
+          role: "admin"
+        }));
+        toast({ title: "Login Successful!", description: "Welcome to the admin dashboard." });
+        navigate("/admin");
+      } else if (formData.email === "staff@genagogy.edu" && formData.password === "password") {
+        // Demo staff -> redirect to Staff Dashboard
         localStorage.setItem("staffLoggedIn", "true");
         localStorage.setItem("staffUser", JSON.stringify({
           name: "Dr. Sarah Johnson",
           email: formData.email,
-          role: "Administrator"
+          role: "staff"
         }));
-        
-        toast({
-          title: "Login Successful!",
-          description: "Welcome back to the staff dashboard.",
-        });
-        
+        toast({ title: "Login Successful!", description: "Welcome back to the staff dashboard." });
         navigate("/staff-dashboard");
       } else {
         toast({
@@ -133,15 +139,7 @@ const StaffLogin = () => {
               </Button>
             </form>
 
-            <div className="mt-6 pt-6 border-t border-border">
-              <div className="text-center text-sm text-muted-foreground">
-                <p className="mb-2">Demo Credentials:</p>
-                <div className="bg-muted p-3 rounded-lg text-left">
-                  <p><strong>Email:</strong> staff@genagogy.edu</p>
-                  <p><strong>Password:</strong> password</p>
-                </div>
-              </div>
-            </div>
+            {/* Demo credentials removed as requested */}
 
             <div className="mt-6 text-center">
               <p className="text-sm text-muted-foreground">

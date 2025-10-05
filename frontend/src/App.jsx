@@ -60,6 +60,7 @@ import CourseDetails from "./pages/CourseDetails";
 import Contact from "./pages/Contact";
 import StaffLogin from "./pages/StaffLogin";
 import StaffDashboard from "./pages/StaffDashboard";
+import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -89,6 +90,7 @@ const App = () => {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/staff-login" element={<StaffLogin />} />
                 <Route path="/staff-dashboard" element={<StaffDashboard />} />
+                <Route path="/admin" element={<AdminDashboard />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

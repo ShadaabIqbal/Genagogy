@@ -25,6 +25,9 @@ export default defineConfig(() => ({
   server: {
     host: "::",
     port: 8080,
+    proxy: {
+      "/api": "http://localhost:5000",
+    },
     // Add this to allow your ngrok URL
     allowedHosts: [
       "localhost",

@@ -1,13 +1,22 @@
 import { useParams, Link } from "react-router-dom";
+import { useState } from "react";
 import { Clock, Users, Award, CheckCircle, Calendar, ArrowLeft, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ImageWithFallback from "@/components/ImageWithFallback";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 
 const CourseDetails = () => {
   const { id } = useParams();
+  const { toast } = useToast();
+  const [showModal, setShowModal] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
 
   // Mock course data - in a real app, this would come from an API
   const courses = {
@@ -259,7 +268,7 @@ const CourseDetails = () => {
                 </div>
               </div>
 
-              <Button size="lg" className="mr-4">
+              <Button size="lg" className="mr-4" onClick={() => setShowModal(true)}>
                 Enroll Now
               </Button>
               <Button size="lg" variant="outline" onClick={() => window.print()}>
@@ -383,9 +392,7 @@ const CourseDetails = () => {
                   <Separator />
                   
                   <div className="space-y-3">
-                    <Button className="w-full" size="lg">
-                      Enroll Now
-                    </Button>
+                    <Button className="w-full" size="lg" onClick={() => setShowModal(true)}>Enroll Now</Button>
                     <Button className="w-full" variant="outline" onClick={() => window.print()}>
                       <Download className="mr-2 h-4 w-4" />
                       Download Syllabus
@@ -399,6 +406,78 @@ const CourseDetails = () => {
           </div>
         </div>
       </section>
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/50" onClick={() => !isSubmitting && setShowModal(false)} />
+          <div className="relative bg-card text-card-foreground w-full max-w-lg rounded-lg shadow-large border border-border p-6 animate-fade-in">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-semibold">Enroll in {course.title}</h3>
+              <button className="text-muted-foreground hover:text-foreground" onClick={() => !isSubmitting && setShowModal(false)}>✕</button>
+            </div>
+            <form
+              className="space-y-4"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setIsSubmitting(true);
+                try {
+                  const payload = { ...formData, course: course.title, source: "course-details" };
+                  const res = await fetch("/api/enrollments", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                  });
+                  if (!res.ok) {
+                    const err = await res.json().catch(() => ({}));
+                    throw new Error(err.message || "Enrollment failed");
+                  }
+                  setFormData({ name: "", email: "", phone: "", message: "" });
+                  setShowModal(false);
+                  setShowSuccess(true);
+                } catch (err) {
+                  // keep modal open; optionally you could show inline error text if desired
+                } finally {
+                  setIsSubmitting(false);
+                }
+              }}
+            >
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="enroll-name">Full Name</Label>
+                  <Input id="enroll-name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} required placeholder="Your Name" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="enroll-email">Email</Label>
+                  <Input id="enroll-email" type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} required placeholder="Email" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="enroll-phone">Phone</Label>
+                  <Input id="enroll-phone" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} required placeholder="Phone" />
+                </div>
+                <div className="space-y-2 md:col-span-2">
+                  <Label htmlFor="enroll-message">Message (optional)</Label>
+                  <Input id="enroll-message" value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} placeholder="Message" />
+                </div>
+              </div>
+              <div className="flex justify-end gap-2 pt-2">
+                <Button type="button" variant="outline" onClick={() => setShowModal(false)} disabled={isSubmitting}>Cancel</Button>
+                <Button type="submit" disabled={isSubmitting}>{isSubmitting ? "Enrolling..." : "Submit"}</Button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+      {showSuccess && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/50" onClick={() => setShowSuccess(false)} />
+          <div className="relative bg-card text-card-foreground w-full max-w-md rounded-lg shadow-large border border-border p-6 animate-fade-in">
+            <h3 className="text-xl font-semibold mb-2">Enrollment submitted</h3>
+            <p className="text-muted-foreground mb-6">Thank you! We will contact you soon with next steps.</p>
+            <div className="flex justify-end">
+              <Button onClick={() => setShowSuccess(false)}>Close</Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

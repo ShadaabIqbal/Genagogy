@@ -132,7 +132,7 @@ const StaffDashboard = () => {
     {
       id: 3,
       name: "Carol Davis",
-      email: "carol.davis@email.com", 
+      email: "carol.davis@email.com",
       phone: "+1 (555) 345-6789",
       course: "Digital Marketing Mastery",
       enrollmentDate: "2024-02-01",
@@ -180,6 +180,8 @@ const StaffDashboard = () => {
     setUser(JSON.parse(staffUser));
   }, [navigate]);
 
+  // Removed backend enrollment fetching; staff dashboard manages local-only demo data
+
   const handleLogout = () => {
     localStorage.removeItem("staffLoggedIn");
     localStorage.removeItem("staffUser");
@@ -200,22 +202,14 @@ const StaffDashboard = () => {
       status: "Active",
       attendance: 0
     };
-    
     setStudents([...students, student]);
     setNewStudent({ name: "", email: "", phone: "", course: "" });
-    
-    toast({
-      title: "Student Added",
-      description: `${student.name} has been successfully enrolled.`,
-    });
+    toast({ title: "Student Added", description: `${student.name} has been successfully enrolled.` });
   };
 
   const handleDeleteStudent = (id) => {
     setStudents(students.filter(s => s.id !== id));
-    toast({
-      title: "Student Removed",
-      description: "Student has been removed from the system.",
-    });
+    toast({ title: "Student Removed", description: "Student has been removed from the system." });
   };
 
   const markAttendance = (id, present) => {

@@ -5,10 +5,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast";
+// removed toast import to avoid bottom popups
 
 const Contact = () => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,15 +15,45 @@ const Contact = () => {
     course: "",
     message: ""
   });
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorText, setErrorText] = useState("");
+  // previewUrl removed; we won't show development previews
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
-    });
-    setFormData({ name: "", email: "", phone: "", course: "", message: "" });
+    if (!formData.name || !formData.email || !formData.phone || !formData.course) {
+      setErrorText("Please fill in all required fields.");
+      return;
+    }
+    try {
+      setSubmitting(true);
+      setErrorText("");
+      const res = await fetch("https://formspree.io/f/mrbylkak", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email, // Formspree will use this as Reply-To
+          phone: formData.phone,
+          course: formData.course,
+          message: formData.message,
+        }),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok || body?.ok === false) {
+        const msg = body?.message || body?.errors?.map?.(e => e.message)?.join?.("; ") || "Failed to send message";
+        throw new Error(msg);
+      }
+      setFormData({ name: "", email: "", phone: "", course: "", message: "" });
+      setShowSuccess(true);
+    } catch (err) {
+      setErrorText(err?.message || "Failed to send message, please try again.");
+    }
+    finally { setSubmitting(false); }
   };
 
   const handleChange = (e) => {
@@ -151,9 +180,14 @@ const Contact = () => {
                       />
                     </div>
 
-                    <Button type="submit" size="lg" className="w-full">
+                    {errorText && (
+                      <div className="text-sm text-destructive bg-destructive/10 border border-destructive/30 rounded p-2">
+                        {errorText}
+                      </div>
+                    )}
+                    <Button type="submit" size="lg" className="w-full" disabled={submitting}>
                       <Send className="mr-2 h-4 w-4" />
-                      Send Message
+                      {submitting ? "Sending..." : "Send Message"}
                     </Button>
                   </form>
                 </CardContent>
@@ -309,6 +343,19 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      {showSuccess && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/50" onClick={() => setShowSuccess(false)} />
+          <div className="relative bg-card text-card-foreground w-full max-w-md rounded-lg shadow-large border border-border p-6 animate-fade-in">
+            <h3 className="text-xl font-semibold mb-2">Message sent</h3>
+            <p className="text-muted-foreground mb-4">Thank you! We'll get back to you shortly.</p>
+            <div className="flex justify-end">
+              <Button onClick={() => setShowSuccess(false)}>Close</Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
