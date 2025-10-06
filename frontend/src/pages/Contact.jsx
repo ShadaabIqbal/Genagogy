@@ -29,7 +29,7 @@ const Contact = () => {
     try {
       setSubmitting(true);
       setErrorText("");
-      const res = await fetch("https://formspree.io/f/mrbylkak", {
+      const res = await fetch("http://localhost:5000/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
