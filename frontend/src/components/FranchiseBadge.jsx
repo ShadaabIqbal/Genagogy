@@ -1,36 +1,43 @@
+import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 
 const FranchiseBadge = () => {
   return (
-    <div className="flex flex-col md:flex-row justify-center items-center mb-12 md:space-x-8 space-y-4 md:space-y-0">
-      {/* Technoglobe Logo */}
-      <div className="flex-shrink-0">
-        <img
-          src="../../public/affliations/technoglobe_logo.png" // adjust filename
-          alt="Technoglobe Logo"
-          className="w-36 h-36 md:w-48 md:h-48 object-contain" // bigger logo
-        />
-      </div>
-
-      {/* Typewriter Tagline */}
-      <div className="bg-white/20 backdrop-blur-md px-8 py-5 rounded-full shadow-lg flex items-center justify-center">
-        <span className="text-lg md:text-2xl font-extrabold text-primary tracking-wide">
-          <Typewriter
-            words={[
-              "Part of the Technoglobe Network",
-              "Powered by Technoglobe Excellence",
-              "Leveraging Technoglobe Expertise"
-            ]}
-            loop={0} // infinite loop
-            cursor
-            cursorStyle={<span className="text-yellow-400">•</span>} // colored dot
-            typeSpeed={80} // faster typing
-            deleteSpeed={40} // faster deleting
-            delaySpeed={1500}
+    <section className="flex justify-center mt-8 mb-12 relative">
+      <div className="flex items-center gap-8">
+        {/* HD Logo */}
+        <div className="flex-shrink-0 w-36 h-36 md:w-48 md:h-48">
+          <img
+            src="../../public/affliations/technoglobe_logo.png"
+            alt="Technoglobe Logo"
+            className="w-full h-full object-contain"
           />
-        </span>
+        </div>
+
+        {/* Text */}
+        <div className="text-center md:text-left">
+          <div className="text-2xl md:text-3xl font-extrabold text-foreground tracking-wide leading-tight">
+            Part of the Technoglobe Network
+          </div>
+          <div className="text-base md:text-lg text-muted-foreground mt-1">
+            <Typewriter
+              words={[
+                "Trusted Excellence in Learning",
+                "Empowering Future Professionals",
+                "World-Class Education Standards",
+                "Shaping Careers with Expertise",
+              ]}
+              loop={0} // infinite loop
+              cursor // show cursor
+              cursorStyle="|" // simple elegant cursor
+              typeSpeed={70} // typing speed
+              deleteSpeed={40} // deleting speed
+              delaySpeed={2000} // delay before next word
+            />
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -40,28 +40,42 @@ const Home = () => {
       role: "Accounting Professional",
       text: "I have completed my Accounting Professional Program from Technoglobe Gopalpura Branch. The faculty supported me well and guided me in my doubts. Provide me best subject guidance and help me out in my interview preparation.",
       rating: 5,
-      image: "../../public/studentTestimonials/yash.webp", // replace with your images
+      image: "../../public/studentTestimonials/yash.webp",
+    },
+    {
+      name: "Student-1",
+      role: "Web Development",
+      text: "I am currently taking the Web Development course at Technoglobe. The faculty are very knowledgeable and guide us through every concept. The hands-on projects make the learning experience practical and fun.",
+      rating: 5,
+      image: "../../public/studentTestimonials/Student-1.jpg",
     },
     {
       name: "Harsh Garg",
       role: "Digital Marketing",
-      text: "I joined Digital Marketing program with list many if and buts running in my mind. But the counselor here in Technoglobe supported throughout my program journey. As well in my PD & PI sessions. Finally I’m placed in a good MNC with smart package. I really recommend my friend and colleague to join Technoglobe for career transformation.",
+      text: "I joined the Digital Marketing program with many doubts, but the faculty at Technoglobe have been incredibly supportive throughout. The sessions are engaging, and I feel my skills improving every day.",
       rating: 5,
       image: "../../public/studentTestimonials/harsh.webp",
     },
     {
+      name: "Student-3",
+      role: "Graphic Designing",
+      text: "I am currently pursuing Graphic Designing at Technoglobe. The faculty are very encouraging and help me enhance my creativity. The assignments and feedback make learning practical and enjoyable.",
+      rating: 5,
+      image: "../../public/studentTestimonials/Student-3.jpg",
+    },
+    {
       name: "Mula Ram",
       role: "Data Analyst",
-      text: "The progress my son has made using this platform has been incredible. He no longer feels stressed about learning new material, and he's tackling challenges with a positive attitude.",
+      text: "I am currently learning Data Analysis at Technoglobe, and the experience has been amazing. The instructors are patient and always ready to help. The practical approach makes learning enjoyable and effective.",
       rating: 5,
       image: "../../public/studentTestimonials/mula.webp",
     },
     {
-      name: "Tanushree",
-      role: "Graphic Designer",
-      text: "The progress my son has made using this platform has been incredible. He no longer feels stressed about learning new material, and he's tackling challenges with a positive attitude.",
+      name: "Student-2",
+      role: "Data Science",
+      text: "Learning Data Science at Technoglobe has been a fantastic experience. The instructors explain concepts clearly and help us apply them through real-world projects. I feel my skills growing steadily every day.",
       rating: 5,
-      image: "../../public/studentTestimonials/tanushree.webp",
+      image: "../../public/studentTestimonials/Student-2.jpg",
     },
   ];
 
@@ -182,28 +196,41 @@ const Home = () => {
       <Affiliations />
 
       {/* Testimonials */}
-      <section className="section-padding bg-gradient-subtle">
-        <div className="container-max">
+      <section className="section-padding bg-gradient-subtle relative overflow-hidden">
+        <div className="container-max relative z-10">
           <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
             What Our Students Say
           </h2>
 
-          <Slider {...sliderSettings}>
+          <Slider
+            {...{
+              dots: true,
+              infinite: true,
+              autoplay: true,
+              autoplaySpeed: 8500, // enough reading time
+              speed: 1500, // silky transition
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              arrows: false,
+              pauseOnHover: false,
+              cssEase: "cubic-bezier(0.65, 0, 0.35, 1)", // natural ease
+            }}
+          >
             {testimonials.map((testimonial, index) => (
               <div key={index} className="px-4">
-                <div className="bg-card/50 backdrop-blur-sm border-border/50 rounded-xl p-6 mx-auto max-w-2xl shadow-lg flex flex-col items-center min-h-[400px]">
-                  <p className="text-muted-foreground mb-6 italic text-center flex-1">
-                    "{testimonial.text}"
+                <div className="relative bg-card/60 backdrop-blur-md border border-border/40 rounded-2xl p-8 mx-auto max-w-2xl shadow-xl flex flex-col items-center min-h-[420px] transition-transform duration-500 hover:scale-[1.02] hover:shadow-2xl">
+                  <p className="text-muted-foreground mb-6 italic text-center leading-relaxed flex-1">
+                    “{testimonial.text}”
                   </p>
 
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover mb-4 border-2 border-primary"
+                    className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover mb-4 border-2 border-primary shadow-md"
                   />
 
                   <div className="text-center">
-                    <div className="font-semibold text-foreground">
+                    <div className="font-semibold text-lg text-foreground">
                       {testimonial.name}
                     </div>
                     <div className="text-sm text-muted-foreground mb-2">
@@ -213,7 +240,7 @@ const Home = () => {
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star
                           key={i}
-                          className="h-5 w-5 fill-primary text-primary"
+                          className="h-5 w-5 fill-primary text-primary drop-shadow-sm"
                         />
                       ))}
                     </div>
@@ -224,18 +251,59 @@ const Home = () => {
           </Slider>
         </div>
 
-        {/* Custom small dots styling */}
+        {/* Floating gradient glow for depth */}
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-primary/5 to-transparent blur-3xl pointer-events-none"></div>
+
+        {/* Enhanced animated dots */}
         <style jsx>{`
           .slick-dots {
-            bottom: -15px;
+            bottom: -35px;
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
           }
+
+          .slick-dots li {
+            width: 8px;
+            height: 8px;
+            margin: 0;
+          }
+
+          .slick-dots li button {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+          }
+
+          .slick-dots li.slick-active button {
+            background: black;
+            animation: stretchDot 0.8s ease forwards;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+          }
+
           .slick-dots li button:before {
-            font-size: 8px;
-            color: black;
-            opacity: 1;
+            content: "";
           }
-          .slick-dots li.slick-active button:before {
-            color: black;
+
+          @keyframes stretchDot {
+            0% {
+              transform: scaleX(1);
+              border-radius: 50%;
+            }
+            30% {
+              transform: scaleX(2) scaleY(0.7);
+              border-radius: 9999px;
+            }
+            60% {
+              transform: scaleX(0.9) scaleY(1.1);
+            }
+            100% {
+              transform: scale(1);
+              border-radius: 50%;
+            }
           }
         `}</style>
       </section>
