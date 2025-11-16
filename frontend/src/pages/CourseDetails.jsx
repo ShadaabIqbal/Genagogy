@@ -28,7 +28,7 @@ const CourseDetails = () => {
       level: "All Levels",
       description: "Learn end-to-end digital marketing: SEO, SEM, social media, content, and analytics.",
       skills: ["SEO", "Google Ads", "Social Media", "Analytics", "Content"],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80",
+      image: "../../public/courses/digital_marketing.jpeg",
       highlights: [
         "Hands-on campaign practice",
         "Case studies and dashboards",
@@ -55,7 +55,7 @@ const CourseDetails = () => {
       level: "Beginner to Intermediate",
       description: "Edit compelling videos with professional workflows, audio, motion, and color grading.",
       skills: ["Editing", "Color", "Audio", "Motion Graphics", "Storytelling"],
-      image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      image: "../../public/courses/video_editing.webp",
       highlights: ["Practical editing labs", "Audio and color workflows", "Story-first approach"],
       curriculum: [
         { module: "Module 1: Editing Basics", topics: ["Non-linear editing", "Timelines", "Cuts & transitions", "Project setup"] },
@@ -281,7 +281,7 @@ const CourseDetails = () => {
               <ImageWithFallback
                 src={course.image}
                 alt={course.title}
-                className="w-full rounded-lg shadow-large"
+                className="mx-auto w-full max-w-lg h-72 rounded-lg shadow-large object-cover"
                 fallback="/course-placeholder.svg"
               />
             </div>
