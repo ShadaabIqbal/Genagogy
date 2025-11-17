@@ -17,6 +17,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
+import AwardsRecognition from "./pages/AwardsRecognition";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ const App = () => {
                 <Route path="/courses" element={<Courses />} />
                 <Route path="/courses/:id" element={<CourseDetails />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/awards" element={<AwardsRecognition />} />
                 <Route path="/staff-login" element={<StaffLogin />} />
                 <Route path="/staff-dashboard" element={<StaffDashboard />} />
                 <Route path="/admin" element={<AdminDashboard />} />

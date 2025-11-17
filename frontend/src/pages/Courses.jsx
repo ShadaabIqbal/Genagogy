@@ -133,8 +133,7 @@ const Courses = () => {
         "Illustration",
         "Figma/Adobe",
       ],
-      image:
-        "../../public/courses/graphic_designing.webp",
+      image: "../../public/courses/graphic_designing.webp",
       syllabus: [
         {
           module: "Module 1: Design Principles",
@@ -355,6 +354,201 @@ const Courses = () => {
             "Monitoring",
             "Reporting",
             "Responsible disclosure",
+          ],
+        },
+      ],
+    },
+    {
+      id: 9,
+      title: "CCNA (Cisco Certified Network Associate)",
+      duration: "4 months",
+      students: 32,
+      level: "Beginner to Intermediate",
+      description:
+        "Master networking fundamentals, routing, switching, security, and automation for Cisco certification.",
+      skills: [
+        "Networking",
+        "Routing",
+        "Switching",
+        "Security",
+        "Troubleshooting",
+      ],
+      image:
+        "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      syllabus: [
+        {
+          module: "Module 1: Network Fundamentals",
+          topics: [
+            "Network models (OSI, TCP/IP)",
+            "IP addressing & subnetting",
+            "Network topologies",
+            "Ethernet LANs",
+          ],
+        },
+        {
+          module: "Module 2: Network Access",
+          topics: [
+            "VLANs & trunking",
+            "Spanning Tree Protocol",
+            "EtherChannel",
+            "Wireless LANs basics",
+          ],
+        },
+        {
+          module: "Module 3: IP Connectivity",
+          topics: [
+            "Static & dynamic routing",
+            "OSPF configuration",
+            "Router setup",
+            "IPv4 & IPv6 routing",
+          ],
+        },
+        {
+          module: "Module 4: Security & Services",
+          topics: [
+            "Access control lists (ACLs)",
+            "Network security",
+            "DHCP & DNS",
+            "NAT configuration",
+          ],
+        },
+        {
+          module: "Module 5: Automation & Management",
+          topics: [
+            "Network automation basics",
+            "REST APIs",
+            "Configuration management",
+            "Troubleshooting tools",
+          ],
+        },
+      ],
+    },
+    {
+      id: 10,
+      title: "Fashion Designing",
+      duration: "5 months",
+      students: 42,
+      level: "All Levels",
+      description:
+        "Learn design principles, pattern making, garment construction, and fashion illustration for a creative career.",
+      skills: [
+        "Sketching",
+        "Pattern Making",
+        "Textiles",
+        "Sewing",
+        "Portfolio Development",
+      ],
+      image:
+        "https://images.pexels.com/photos/9218422/pexels-photo-9218422.jpeg",
+      syllabus: [
+        {
+          module: "Module 1: Design Foundations",
+          topics: [
+            "Elements & principles of design",
+            "Color theory",
+            "Fashion history",
+            "Trend analysis",
+          ],
+        },
+        {
+          module: "Module 2: Textiles & Materials",
+          topics: [
+            "Fabric types & properties",
+            "Textile selection",
+            "Finishes & treatments",
+            "Sustainable materials",
+          ],
+        },
+        {
+          module: "Module 3: Fashion Illustration",
+          topics: [
+            "Sketching techniques",
+            "Fashion figures",
+            "Digital illustration",
+            "Mood boards",
+          ],
+        },
+        {
+          module: "Module 4: Pattern Making & Construction",
+          topics: [
+            "Body measurements",
+            "Pattern drafting",
+            "Garment construction",
+            "Sewing techniques",
+          ],
+        },
+        {
+          module: "Module 5: Portfolio & Business",
+          topics: [
+            "Portfolio development",
+            "Brand identity",
+            "Fashion marketing",
+            "Industry practices",
+          ],
+        },
+      ],
+    },
+    {
+      id: 11,
+      title: "Interior Designing",
+      duration: "5 months",
+      students: 39,
+      level: "Beginner to Intermediate",
+      description:
+        "Design functional and beautiful interior spaces with space planning, color theory, and modern tools.",
+      skills: [
+        "Space Planning",
+        "CAD Software",
+        "Color Theory",
+        "Lighting",
+        "3D Visualization",
+      ],
+      image:
+        "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2100&q=80",
+      syllabus: [
+        {
+          module: "Module 1: Design Principles",
+          topics: [
+            "Elements of design",
+            "Color theory & psychology",
+            "Design styles & history",
+            "Ergonomics & anthropometry",
+          ],
+        },
+        {
+          module: "Module 2: Technical Drawing",
+          topics: [
+            "Floor plans",
+            "Elevations",
+            "AutoCAD basics",
+            "Drafting standards",
+          ],
+        },
+        {
+          module: "Module 3: Materials & Finishes",
+          topics: [
+            "Material selection",
+            "Textiles & fabrics",
+            "Flooring & wall finishes",
+            "Furniture styles",
+          ],
+        },
+        {
+          module: "Module 4: Space Planning & Lighting",
+          topics: [
+            "Space planning principles",
+            "Traffic flow",
+            "Lighting design",
+            "Furniture layout",
+          ],
+        },
+        {
+          module: "Module 5: 3D Visualization & Projects",
+          topics: [
+            "SketchUp/Revit",
+            "3D rendering",
+            "Sustainable design",
+            "Client presentations",
           ],
         },
       ],

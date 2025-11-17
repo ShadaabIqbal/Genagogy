@@ -20,6 +20,7 @@ app.get("/api/health", (req, res) => {
 
 app.use("/api/enrollments", require("./routes/enrollmentRoutes"));
 app.use("/api/contact", require("./routes/contactRoutes"));
+app.use("/api/registrations", require("./routes/registrationRoutes"));
 
 // Error handler (fallback)
 // eslint-disable-next-line no-unused-vars
@@ -31,7 +32,8 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 
 // Hardcoded MongoDB connection string per user request
-const MONGO_URI = "mongodb+srv://shadaabiqbal_db_user:1dfnxqDADGJpow36@genagogy-institute.qryryuw.mongodb.net/?retryWrites=true&w=majority&appName=Genagogy-Institute";
+const MONGO_URI =
+  "mongodb+srv://shadaabiqbal_db_user:1dfnxqDADGJpow36@genagogy-institute.qryryuw.mongodb.net/?retryWrites=true&w=majority&appName=Genagogy-Institute";
 
 connectToDatabase(MONGO_URI)
   .then(() => {
@@ -45,5 +47,3 @@ connectToDatabase(MONGO_URI)
     console.error("Failed to connect to MongoDB:", error.message);
     process.exit(1);
   });
-
-

@@ -17,14 +17,15 @@ const Navbar = () => {
       setIsScrolled(window.scrollY > 20);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
+    { name: "Awards", path: "/awards" },
     { name: "Staff Login", path: "/staff-login" },
   ];
 
@@ -50,57 +51,62 @@ const Navbar = () => {
     {
       id: 4,
       title: "Web Development (MERN)",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop&q=80",
+      image:
+        "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop&q=80",
       path: "/courses/4",
     },
     {
       id: 5,
       title: "Data Science",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&q=80",
+      image:
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&q=80",
       path: "/courses/5",
     },
     {
       id: 6,
       title: "Data Analytics",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&q=80",
+      image:
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&q=80",
       path: "/courses/6",
     },
     {
       id: 7,
       title: "Professional Accounting",
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop&q=80",
+      image:
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop&q=80",
       path: "/courses/7",
     },
     {
       id: 8,
       title: "Ethical Hacking & Cyber Security",
-      image: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=400&h=300&fit=crop&q=80",
+      image:
+        "https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=400&h=300&fit=crop&q=80",
       path: "/courses/8",
     },
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-      ? 'bg-background/95 backdrop-blur-xl border-b border-border/50 shadow-sm'
-      : 'bg-background/80 backdrop-blur-md border-b border-transparent'
-      }`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-background/95 backdrop-blur-xl border-b border-border/50 shadow-sm"
+          : "bg-background/80 backdrop-blur-md border-b border-transparent"
+      }`}
+    >
       <div className="container-max">
         {/* Main Navbar Row */}
         <div className="flex justify-between items-center min-h-[80px] py-3">
           {/* Enhanced Logo - Optimized Loading */}
-          <Link
-            to="/"
-            className="flex items-center space-x-3 mr-8 md:mr-12"
-          >
+          <Link to="/" className="flex items-center space-x-3 mr-8 md:mr-12">
             <div className="relative">
               <ImageWithFallback
                 src="/Genagogy_Logo.png"
                 alt="Genagogy Logo"
                 className="h-16 md:h-20 lg:h-24 w-auto object-contain brightness-120 contrast-120 saturate-120 drop-shadow-[0_4px_12px_rgba(59,130,246,0.3)] filter"
                 style={{
-                  imageRendering: 'crisp-edges',
-                  WebkitImageRendering: 'crisp-edges',
-                  msInterpolationMode: 'nearest-neighbor',
+                  imageRendering: "crisp-edges",
+                  WebkitImageRendering: "crisp-edges",
+                  msInterpolationMode: "nearest-neighbor",
                 }}
                 fallback="/placeholder.svg"
                 loading="eager"
@@ -126,10 +132,11 @@ const Navbar = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`font-medium transition-all duration-300 will-change-[color,transform] transform hover:scale-105 ${isActive(item.path)
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-primary"
-                    }`}
+                  className={`font-medium transition-all duration-300 will-change-[color,transform] transform hover:scale-105 ${
+                    isActive(item.path)
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
                 >
                   {item.name}
                 </Link>
@@ -143,21 +150,26 @@ const Navbar = () => {
               >
                 <Link
                   to="/courses"
-                  className={`font-medium transition-all duration-300 will-change-[color,transform] transform hover:scale-105 flex items-center gap-1 ${location.pathname.startsWith('/courses')
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-primary"
-                    }`}
+                  className={`font-medium transition-all duration-300 will-change-[color,transform] transform hover:scale-105 flex items-center gap-1 ${
+                    location.pathname.startsWith("/courses")
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
                 >
                   Courses
-                  <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${isCoursesDropdownOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform duration-300 ${
+                      isCoursesDropdownOpen ? "rotate-180" : ""
+                    }`}
+                  />
                 </Link>
 
                 {/* Dropdown Content */}
                 {isCoursesDropdownOpen && (
                   <div
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[1000px] max-w-[calc(100vw-3rem)] max-h-[600px] 
-overflow-y-auto p-8 bg-background/95 backdrop-blur-xl border border-border/50 shadow-xl rounded-xl 
-z-50 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2"
+                    className="absolute top-full right-0 mt-2 w-[900px] max-w-[900px] max-h-[500px] overflow-y-auto p-6 bg-background/95 backdrop-blur-xl
+                               border border-border/50 shadow-xl rounded-xl
+                               z-50 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2"
                     onMouseEnter={() => setIsCoursesDropdownOpen(true)}
                     onMouseLeave={() => setIsCoursesDropdownOpen(false)}
                   >
@@ -228,9 +240,9 @@ z-50 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2"
                     fallback="/placeholder.svg"
                     className="w-9 h-9 object-contain brightness-115 contrast-115 saturate-115 drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)] filter"
                     style={{
-                      imageRendering: 'crisp-edges',
-                      WebkitImageRendering: 'crisp-edges',
-                      msInterpolationMode: 'nearest-neighbor'
+                      imageRendering: "crisp-edges",
+                      WebkitImageRendering: "crisp-edges",
+                      msInterpolationMode: "nearest-neighbor",
                     }}
                   />
                 </div>
@@ -263,9 +275,9 @@ z-50 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2"
                     fallback="/placeholder.svg"
                     className="w-9 h-9 object-contain brightness-115 contrast-115 saturate-115 drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)] filter"
                     style={{
-                      imageRendering: 'crisp-edges',
-                      WebkitImageRendering: 'crisp-edges',
-                      msInterpolationMode: 'nearest-neighbor'
+                      imageRendering: "crisp-edges",
+                      WebkitImageRendering: "crisp-edges",
+                      msInterpolationMode: "nearest-neighbor",
                     }}
                   />
                 </div>
@@ -304,10 +316,11 @@ z-50 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2"
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${isActive(item.path)
-                    ? "text-primary bg-primary-light"
-                    : "text-muted-foreground hover:text-primary hover:bg-accent"
-                    }`}
+                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+                    isActive(item.path)
+                      ? "text-primary bg-primary-light"
+                      : "text-muted-foreground hover:text-primary hover:bg-accent"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
@@ -318,10 +331,11 @@ z-50 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2"
               <div className="pt-2 border-t border-border mt-2">
                 <Link
                   to="/courses"
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${location.pathname.startsWith('/courses')
-                    ? "text-primary bg-primary-light"
-                    : "text-muted-foreground hover:text-primary hover:bg-accent"
-                    }`}
+                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+                    location.pathname.startsWith("/courses")
+                      ? "text-primary bg-primary-light"
+                      : "text-muted-foreground hover:text-primary hover:bg-accent"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   All Courses
@@ -342,7 +356,9 @@ z-50 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2"
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <span className="text-sm font-medium text-foreground">{course.title}</span>
+                      <span className="text-sm font-medium text-foreground">
+                        {course.title}
+                      </span>
                     </Link>
                   ))}
                 </div>
@@ -361,7 +377,9 @@ z-50 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2"
                     fallback="/placeholder.svg"
                     className="w-8 h-8 object-contain"
                   />
-                  <span className="text-sm font-medium text-foreground">Technoglobe Partner</span>
+                  <span className="text-sm font-medium text-foreground">
+                    Technoglobe Partner
+                  </span>
                 </a>
                 <a
                   href="https://nifd.net.in/"
@@ -375,7 +393,9 @@ z-50 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2"
                     fallback="/placeholder.svg"
                     className="w-8 h-8 object-contain"
                   />
-                  <span className="text-sm font-medium text-foreground">INIFD Design</span>
+                  <span className="text-sm font-medium text-foreground">
+                    INIFD Design
+                  </span>
                 </a>
               </div>
             </div>

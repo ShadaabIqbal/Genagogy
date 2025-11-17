@@ -18,9 +18,9 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center">
               <img
-                src="/logo.svg"
+                src="/Genagogy_Logo.png"
                 alt="Genagogy Logo"
-                className="h-14 w-auto filter brightness-0 invert"
+                className="h-[100px] w-auto filter brightness-0"
               />
             </div>
             <p className="text-primary-foreground/80 text-sm leading-relaxed">
