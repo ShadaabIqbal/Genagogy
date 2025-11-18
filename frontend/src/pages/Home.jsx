@@ -1,5 +1,21 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Users, Award, BookOpen, Target, Star, TrendingUp, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowRight,
+  Users,
+  Award,
+  BookOpen,
+  Target,
+  Star,
+  TrendingUp,
+  Sparkles,
+  ChevronLeft,
+  ChevronRight,
+  Instagram,
+  ExternalLink,
+  Play,
+  Volume2,
+  VolumeX,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import ImageWithFallback from "@/components/ImageWithFallback";
@@ -7,18 +23,45 @@ import Affiliations from "@/components/Affiliations";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useState } from "react";
+import AwardVideoCard from "../components/AwardVideoCard";
+
+const videos = [
+  {
+    src: "https://technoglobe.co.in/video/vidhya.mp4?v1",
+    title: "Vidhya",
+    desc: "",
+  },
+  {
+    src: "https://technoglobe.co.in/video/arjun.mp4?v1",
+    title: "Arjun",
+    desc: "",
+  },
+  {
+    src: "https://technoglobe.co.in/video/kiku.mp4?v1",
+    title: "Kiku",
+    desc: "",
+  },
+  {
+    src: "https://technoglobe.co.in/video/delnaz.mp4?v1",
+    title: "Delnaz",
+    desc: "",
+  },
+];
 
 const Home = () => {
   // Custom Arrow Components for Testimonials
   const PrevArrow = ({ onClick, className, style }) => {
-    if (className?.includes('slick-disabled')) {
+    if (className?.includes("slick-disabled")) {
       return null;
     }
     return (
       <button
         type="button"
         onClick={onClick}
-        className={`testimonial-arrow testimonial-arrow-prev ${className || ''}`}
+        className={`testimonial-arrow testimonial-arrow-prev ${
+          className || ""
+        }`}
         style={style}
         aria-label="Previous testimonial"
       >
@@ -28,14 +71,16 @@ const Home = () => {
   };
 
   const NextArrow = ({ onClick, className, style }) => {
-    if (className?.includes('slick-disabled')) {
+    if (className?.includes("slick-disabled")) {
       return null;
     }
     return (
       <button
         type="button"
         onClick={onClick}
-        className={`testimonial-arrow testimonial-arrow-next ${className || ''}`}
+        className={`testimonial-arrow testimonial-arrow-next ${
+          className || ""
+        }`}
         style={style}
         aria-label="Next testimonial"
       >
@@ -166,21 +211,30 @@ const Home = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-primary/10 to-transparent"></div>
         </div>
-        
+
         <div className="relative container-max section-padding">
           <div className="max-w-3xl animate-fade-in will-change-[opacity,transform]">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]" style={{ animationDelay: '0.1s' }}>
+            <h1
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
+              style={{ animationDelay: "0.1s" }}
+            >
               Shape Your Future with
               <span className="block text-primary-light transform transition-all duration-500 hover:scale-105 hover:drop-shadow-[0_6px_20px_rgba(255,255,255,0.4)] inline-block will-change-transform">
                 Genagogy
               </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-primary-foreground/95 leading-relaxed animate-fade-in drop-shadow-[0_2px_8px_rgba(0,0,0,0.2)]" style={{ animationDelay: '0.2s' }}>
+            <p
+              className="text-xl md:text-2xl mb-8 text-primary-foreground/95 leading-relaxed animate-fade-in drop-shadow-[0_2px_8px_rgba(0,0,0,0.2)]"
+              style={{ animationDelay: "0.2s" }}
+            >
               Master industry-relevant skills with expert instructors and
               hands-on projects. Your journey to professional success starts
               here.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <div
+              className="flex flex-col sm:flex-row gap-4 animate-fade-in"
+              style={{ animationDelay: "0.3s" }}
+            >
               <Button
                 size="lg"
                 variant="secondary"
@@ -188,7 +242,8 @@ const Home = () => {
                 className="text-lg px-8 py-4 transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/30 will-change-transform group backdrop-blur-sm"
               >
                 <Link to="/courses" className="flex items-center">
-                  Explore Courses <ArrowRight className="ml-2 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />
+                  Explore Courses{" "}
+                  <ArrowRight className="ml-2 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </Button>
               <Button
@@ -244,13 +299,16 @@ const Home = () => {
           <div className="text-center mb-16 md:mb-20">
             <div className="inline-flex items-center gap-2 mb-5 px-5 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
               <Star className="h-4 w-4 text-primary fill-primary" />
-              <span className="text-xs font-semibold text-primary uppercase tracking-wider">Student Reviews</span>
+              <span className="text-xs font-semibold text-primary uppercase tracking-wider">
+                Student Reviews
+              </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
               What Our Students Say
             </h2>
             <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-              Real experiences from students who transformed their careers with us
+              Real experiences from students who transformed their careers with
+              us
             </p>
           </div>
 
@@ -276,11 +334,15 @@ const Home = () => {
                   <div className="relative bg-gradient-to-br from-card via-card to-primary-light/5 backdrop-blur-sm border border-border/50 rounded-3xl p-10 md:p-12 mx-auto max-w-3xl shadow-sm hover:shadow-md transition-shadow duration-300">
                     {/* Decorative Top Accent */}
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent rounded-t-3xl"></div>
-                    
+
                     {/* Quote Icon - Elegant */}
                     <div className="absolute top-6 right-6 opacity-5">
-                      <svg className="w-16 h-16 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.996 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.984zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                      <svg
+                        className="w-16 h-16 text-primary"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.996 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.984zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                       </svg>
                     </div>
 
@@ -458,35 +520,112 @@ const Home = () => {
         `}</style>
       </section>
 
+      {/* Instagram Feed Section */}
+      <section className="section-padding bg-gradient-to-b from-muted/30 to-background">
+        <div className="container-max">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 mb-5 px-5 py-2 rounded-full bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-500/20 backdrop-blur-sm">
+              <Instagram className="h-4 w-4 text-pink-600" />
+              <span className="text-xs font-semibold text-pink-600 uppercase tracking-wider">
+                Follow Our Journey
+              </span>
+            </div>
+
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+              Latest From Instagram
+            </h2>
+
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Stay connected with our community and latest updates
+            </p>
+          </div>
+
+          {/* Instagram Feed Embed Box */}
+          <div className="relative w-full max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-xl border border-white/20 bg-white/5 backdrop-blur-md p-0">
+            {/* LightWidget Script */}
+            <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+
+            <iframe
+              src="//lightwidget.com/widgets/318ae46a2bea5de9a3c4887e0c1d7cf7.html"
+              className="w-full h-[500px] border-none lightwidget-widget"
+              scrolling="no"
+              allowTransparency={true}
+            ></iframe>
+          </div>
+
+          {/* Follow Button */}
+          <div className="text-center mt-10">
+            <Button
+              size="lg"
+              asChild
+              className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              <a
+                href="https://www.instagram.com/genagogy_srinagar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <Instagram className="h-5 w-5" />
+                Follow @genagogy_srinagar
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Visual Separator */}
       <div className="relative h-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-primary-light/5 to-background"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent rounded-full"></div>
       </div>
 
+      {/* Homepage Video Section */}
+      <section className="container-max my-8">
+        <h4 className="text-xl font-bold mb-4 invert">Video Highlights</h4>
+
+        <div className="flex gap-8 justify-center overflow-x-auto pb-4 no-scrollbar">
+          {videos.map((v, idx) => (
+            <AwardVideoCard
+              key={idx}
+              src={v.src}
+              title={v.title}
+              description={v.desc}
+            />
+          ))}
+        </div>
+      </section>
+
       {/* Premium Tech Blogs Section - After Testimonials */}
       <section className="section-padding bg-gradient-to-b from-background via-muted/30 to-background relative overflow-hidden">
         {/* Decorative Background Elements - More Subtle */}
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/3 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3"></div>
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/3 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
-        
+
         <div className="container-max relative z-10">
           <div className="text-center mb-12 animate-fade-in">
             <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-muted/50 border border-border/50">
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
-              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Trending Insights</span>
+              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                Trending Insights
+              </span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-3 text-foreground">
               Latest Tech Insights & Industry Trends
             </h2>
             <p className="text-muted-foreground text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
-              Stay ahead of the curve with cutting-edge technology insights, industry trends, and expert knowledge
+              Stay ahead of the curve with cutting-edge technology insights,
+              industry trends, and expert knowledge
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {/* Blog 1 - AI & Machine Learning */}
-            <Card className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform" style={{ animationDelay: '0.1s' }}>
+            <Card
+              className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform"
+              style={{ animationDelay: "0.1s" }}
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/8 transition-all duration-500 rounded-2xl"></div>
               <CardContent className="relative p-0">
                 {/* HD Image Header */}
@@ -496,11 +635,13 @@ const Home = () => {
                     alt="AI & Machine Learning"
                     fallback="/placeholder.svg"
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    style={{ imageRendering: 'crisp-edges' }}
+                    style={{ imageRendering: "crisp-edges" }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent"></div>
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">AI & ML</span>
+                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">
+                      AI & ML
+                    </span>
                   </div>
                   <Sparkles className="absolute top-4 right-4 h-5 w-5 text-primary-foreground drop-shadow-lg" />
                 </div>
@@ -513,17 +654,26 @@ const Home = () => {
                     The Future of AI in Education & Learning
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                    Discover how artificial intelligence is revolutionizing learning experiences, personalizing education, and shaping the future of educational technology.
+                    Discover how artificial intelligence is revolutionizing
+                    learning experiences, personalizing education, and shaping
+                    the future of educational technology.
                   </p>
-                  <Link to="/blog/ai-education" className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300">
-                    Read Article <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  <Link
+                    to="/blog/ai-education"
+                    className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300"
+                  >
+                    Read Article{" "}
+                    <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
               </CardContent>
             </Card>
 
             {/* Blog 2 - Digital Marketing */}
-            <Card className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform" style={{ animationDelay: '0.15s' }}>
+            <Card
+              className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform"
+              style={{ animationDelay: "0.15s" }}
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/8 transition-all duration-500 rounded-2xl"></div>
               <CardContent className="relative p-0">
                 <div className="relative h-56 overflow-hidden">
@@ -532,11 +682,13 @@ const Home = () => {
                     alt="Digital Marketing"
                     fallback="/placeholder.svg"
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    style={{ imageRendering: 'crisp-edges' }}
+                    style={{ imageRendering: "crisp-edges" }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent"></div>
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">Marketing</span>
+                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">
+                      Marketing
+                    </span>
                   </div>
                   <Sparkles className="absolute top-4 right-4 h-5 w-5 text-primary-foreground drop-shadow-lg" />
                 </div>
@@ -549,17 +701,26 @@ const Home = () => {
                     Digital Marketing Strategies for 2025
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                    Master the latest digital marketing trends, SEO techniques, social media strategies, and content marketing approaches that drive results.
+                    Master the latest digital marketing trends, SEO techniques,
+                    social media strategies, and content marketing approaches
+                    that drive results.
                   </p>
-                  <Link to="/blog/digital-marketing-2025" className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300">
-                    Read Article <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  <Link
+                    to="/blog/digital-marketing-2025"
+                    className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300"
+                  >
+                    Read Article{" "}
+                    <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
               </CardContent>
             </Card>
 
             {/* Blog 3 - Graphic Designing */}
-            <Card className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform" style={{ animationDelay: '0.2s' }}>
+            <Card
+              className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform"
+              style={{ animationDelay: "0.2s" }}
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/8 transition-all duration-500 rounded-2xl"></div>
               <CardContent className="relative p-0">
                 <div className="relative h-56 overflow-hidden">
@@ -568,11 +729,13 @@ const Home = () => {
                     alt="Graphic Designing"
                     fallback="/placeholder.svg"
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    style={{ imageRendering: 'crisp-edges' }}
+                    style={{ imageRendering: "crisp-edges" }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent"></div>
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">Design</span>
+                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">
+                      Design
+                    </span>
                   </div>
                   <Sparkles className="absolute top-4 right-4 h-5 w-5 text-primary-foreground drop-shadow-lg" />
                 </div>
@@ -585,17 +748,26 @@ const Home = () => {
                     Modern Graphic Design Trends & Tools
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                    Explore cutting-edge design trends, creative techniques, and powerful tools that are shaping the future of visual communication and branding.
+                    Explore cutting-edge design trends, creative techniques, and
+                    powerful tools that are shaping the future of visual
+                    communication and branding.
                   </p>
-                  <Link to="/blog/graphic-design-trends" className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300">
-                    Read Article <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  <Link
+                    to="/blog/graphic-design-trends"
+                    className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300"
+                  >
+                    Read Article{" "}
+                    <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
               </CardContent>
             </Card>
 
             {/* Blog 4 - Data Science */}
-            <Card className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform" style={{ animationDelay: '0.25s' }}>
+            <Card
+              className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform"
+              style={{ animationDelay: "0.25s" }}
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/8 transition-all duration-500 rounded-2xl"></div>
               <CardContent className="relative p-0">
                 <div className="relative h-56 overflow-hidden">
@@ -604,11 +776,13 @@ const Home = () => {
                     alt="Data Science"
                     fallback="/placeholder.svg"
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    style={{ imageRendering: 'crisp-edges' }}
+                    style={{ imageRendering: "crisp-edges" }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent"></div>
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">Analytics</span>
+                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">
+                      Analytics
+                    </span>
                   </div>
                   <Sparkles className="absolute top-4 right-4 h-5 w-5 text-primary-foreground drop-shadow-lg" />
                 </div>
@@ -621,17 +795,26 @@ const Home = () => {
                     Big Data Analytics & Business Intelligence
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                    Learn how data science and analytics are transforming businesses, driving decisions, and creating competitive advantages in the digital economy.
+                    Learn how data science and analytics are transforming
+                    businesses, driving decisions, and creating competitive
+                    advantages in the digital economy.
                   </p>
-                  <Link to="/blog/data-science-analytics" className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300">
-                    Read Article <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  <Link
+                    to="/blog/data-science-analytics"
+                    className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300"
+                  >
+                    Read Article{" "}
+                    <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
               </CardContent>
             </Card>
 
             {/* Blog 5 - Web Development */}
-            <Card className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform" style={{ animationDelay: '0.3s' }}>
+            <Card
+              className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform"
+              style={{ animationDelay: "0.3s" }}
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/8 transition-all duration-500 rounded-2xl"></div>
               <CardContent className="relative p-0">
                 <div className="relative h-56 overflow-hidden">
@@ -640,11 +823,13 @@ const Home = () => {
                     alt="Web Development"
                     fallback="/placeholder.svg"
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    style={{ imageRendering: 'crisp-edges' }}
+                    style={{ imageRendering: "crisp-edges" }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent"></div>
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">Web Dev</span>
+                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">
+                      Web Dev
+                    </span>
                   </div>
                   <Sparkles className="absolute top-4 right-4 h-5 w-5 text-primary-foreground drop-shadow-lg" />
                 </div>
@@ -657,17 +842,26 @@ const Home = () => {
                     Next-Gen Web Development Frameworks
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                    Discover the latest frameworks, libraries, and technologies that are revolutionizing web development and creating exceptional user experiences.
+                    Discover the latest frameworks, libraries, and technologies
+                    that are revolutionizing web development and creating
+                    exceptional user experiences.
                   </p>
-                  <Link to="/blog/web-development-frameworks" className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300">
-                    Read Article <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  <Link
+                    to="/blog/web-development-frameworks"
+                    className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300"
+                  >
+                    Read Article{" "}
+                    <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
               </CardContent>
             </Card>
 
             {/* Blog 6 - Cloud Computing */}
-            <Card className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform" style={{ animationDelay: '0.35s' }}>
+            <Card
+              className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform"
+              style={{ animationDelay: "0.35s" }}
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/8 transition-all duration-500 rounded-2xl"></div>
               <CardContent className="relative p-0">
                 <div className="relative h-56 overflow-hidden">
@@ -676,11 +870,13 @@ const Home = () => {
                     alt="Cloud Computing"
                     fallback="/placeholder.svg"
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    style={{ imageRendering: 'crisp-edges' }}
+                    style={{ imageRendering: "crisp-edges" }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent"></div>
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">Cloud</span>
+                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">
+                      Cloud
+                    </span>
                   </div>
                   <Sparkles className="absolute top-4 right-4 h-5 w-5 text-primary-foreground drop-shadow-lg" />
                 </div>
@@ -693,10 +889,16 @@ const Home = () => {
                     Cloud Infrastructure & Scalability
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                    Understand cloud computing platforms, serverless architecture, and scalable solutions that power modern applications and businesses.
+                    Understand cloud computing platforms, serverless
+                    architecture, and scalable solutions that power modern
+                    applications and businesses.
                   </p>
-                  <Link to="/blog/cloud-computing" className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300">
-                    Read Article <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  <Link
+                    to="/blog/cloud-computing"
+                    className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300"
+                  >
+                    Read Article{" "}
+                    <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
               </CardContent>
@@ -706,7 +908,10 @@ const Home = () => {
           {/* Second Row of Blogs */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-8">
             {/* Blog 7 - Cybersecurity */}
-            <Card className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform" style={{ animationDelay: '0.4s' }}>
+            <Card
+              className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform"
+              style={{ animationDelay: "0.4s" }}
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/8 transition-all duration-500 rounded-2xl"></div>
               <CardContent className="relative p-0">
                 <div className="relative h-56 overflow-hidden">
@@ -715,11 +920,13 @@ const Home = () => {
                     alt="Cybersecurity"
                     fallback="/placeholder.svg"
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    style={{ imageRendering: 'crisp-edges' }}
+                    style={{ imageRendering: "crisp-edges" }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent"></div>
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">Security</span>
+                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">
+                      Security
+                    </span>
                   </div>
                   <Sparkles className="absolute top-4 right-4 h-5 w-5 text-primary-foreground drop-shadow-lg" />
                 </div>
@@ -732,17 +939,26 @@ const Home = () => {
                     Essential Cybersecurity Practices
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                    Learn critical cybersecurity strategies, threat prevention, and best practices to protect digital assets and maintain secure systems.
+                    Learn critical cybersecurity strategies, threat prevention,
+                    and best practices to protect digital assets and maintain
+                    secure systems.
                   </p>
-                  <Link to="/blog/cybersecurity-practices" className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300">
-                    Read Article <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  <Link
+                    to="/blog/cybersecurity-practices"
+                    className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300"
+                  >
+                    Read Article{" "}
+                    <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
               </CardContent>
             </Card>
 
             {/* Blog 8 - Mobile App Development */}
-            <Card className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform" style={{ animationDelay: '0.45s' }}>
+            <Card
+              className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform"
+              style={{ animationDelay: "0.45s" }}
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/8 transition-all duration-500 rounded-2xl"></div>
               <CardContent className="relative p-0">
                 <div className="relative h-56 overflow-hidden">
@@ -751,11 +967,13 @@ const Home = () => {
                     alt="Mobile App Development"
                     fallback="/placeholder.svg"
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    style={{ imageRendering: 'crisp-edges' }}
+                    style={{ imageRendering: "crisp-edges" }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent"></div>
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">Mobile</span>
+                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">
+                      Mobile
+                    </span>
                   </div>
                   <Sparkles className="absolute top-4 right-4 h-5 w-5 text-primary-foreground drop-shadow-lg" />
                 </div>
@@ -768,17 +986,26 @@ const Home = () => {
                     Mobile App Development Mastery
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                    Master iOS and Android development, cross-platform frameworks, and modern mobile app design principles for creating exceptional user experiences.
+                    Master iOS and Android development, cross-platform
+                    frameworks, and modern mobile app design principles for
+                    creating exceptional user experiences.
                   </p>
-                  <Link to="/blog/mobile-app-development" className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300">
-                    Read Article <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  <Link
+                    to="/blog/mobile-app-development"
+                    className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300"
+                  >
+                    Read Article{" "}
+                    <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
               </CardContent>
             </Card>
 
             {/* Blog 9 - UI/UX Design */}
-            <Card className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform" style={{ animationDelay: '0.5s' }}>
+            <Card
+              className="group relative rounded-2xl border border-border/40 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden animate-fade-in will-change-transform"
+              style={{ animationDelay: "0.5s" }}
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/8 transition-all duration-500 rounded-2xl"></div>
               <CardContent className="relative p-0">
                 <div className="relative h-56 overflow-hidden">
@@ -787,11 +1014,13 @@ const Home = () => {
                     alt="UI/UX Design"
                     fallback="/placeholder.svg"
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    style={{ imageRendering: 'crisp-edges' }}
+                    style={{ imageRendering: "crisp-edges" }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent"></div>
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">UI/UX</span>
+                    <span className="px-3 py-1.5 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-bold">
+                      UI/UX
+                    </span>
                   </div>
                   <Sparkles className="absolute top-4 right-4 h-5 w-5 text-primary-foreground drop-shadow-lg" />
                 </div>
@@ -804,10 +1033,16 @@ const Home = () => {
                     User Experience Design Excellence
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                    Explore user-centered design principles, interaction patterns, and UX research methods that create intuitive and engaging digital experiences.
+                    Explore user-centered design principles, interaction
+                    patterns, and UX research methods that create intuitive and
+                    engaging digital experiences.
                   </p>
-                  <Link to="/blog/ui-ux-design" className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300">
-                    Read Article <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  <Link
+                    to="/blog/ui-ux-design"
+                    className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all duration-300"
+                  >
+                    Read Article{" "}
+                    <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
               </CardContent>
@@ -819,10 +1054,16 @@ const Home = () => {
       {/* CTA Section with Enhanced Animations */}
       <section className="section-padding bg-primary text-primary-foreground">
         <div className="container-max text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-fade-in will-change-[opacity,transform]" style={{ animationDelay: '0.1s' }}>
+          <h2
+            className="text-3xl md:text-4xl font-bold mb-6 animate-fade-in will-change-[opacity,transform]"
+            style={{ animationDelay: "0.1s" }}
+          >
             Ready to Transform Your Career?
           </h2>
-          <p className="text-xl mb-8 text-primary-foreground/90 max-w-2xl mx-auto animate-fade-in will-change-[opacity,transform]" style={{ animationDelay: '0.2s' }}>
+          <p
+            className="text-xl mb-8 text-primary-foreground/90 max-w-2xl mx-auto animate-fade-in will-change-[opacity,transform]"
+            style={{ animationDelay: "0.2s" }}
+          >
             Join thousands of successful professionals who started their journey
             at Genagogy.
           </p>
@@ -831,10 +1072,11 @@ const Home = () => {
             variant="secondary"
             asChild
             className="text-lg px-8 py-4 transform transition-all duration-300 hover:scale-105 hover:shadow-xl will-change-transform group animate-fade-in"
-            style={{ animationDelay: '0.3s' }}
+            style={{ animationDelay: "0.3s" }}
           >
             <Link to="/contact" className="flex items-center">
-              Get Started Today <ArrowRight className="ml-2 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />
+              Get Started Today{" "}
+              <ArrowRight className="ml-2 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </Button>
         </div>
