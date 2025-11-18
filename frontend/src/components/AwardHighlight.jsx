@@ -9,9 +9,9 @@ export default function AwardHighlight({
   description,
 }) {
   return (
-    <section className="relative container-max -mt-16 mb-12">
+    <section className="relative container-max -mt-8 sm:-mt-16 mb-8 sm:mb-12 px-4 sm:px-6">
       <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-        <div className="relative h-[420px] lg:h-[520px] bg-black">
+        <div className="relative h-[300px] sm:h-[380px] md:h-[420px] lg:h-[520px] bg-black">
           <ImageWithFallback
             src={image}
             alt={headline}
@@ -21,14 +21,14 @@ export default function AwardHighlight({
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent"></div>
 
           {/* Floating text card */}
-          <div className="absolute left-6 lg:left-12 bottom-6 lg:bottom-12 max-w-lg bg-black/60 backdrop-blur-md border border-primary/20 rounded-xl p-6 lg:p-8 shadow-lg">
-            <div className="text-sm text-primary font-semibold uppercase tracking-wider mb-2">
+          <div className="absolute left-3 right-3 sm:left-6 lg:left-12 bottom-3 sm:bottom-6 lg:bottom-12 max-w-lg bg-black/60 backdrop-blur-md border border-primary/20 rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg">
+            <div className="text-xs sm:text-sm text-primary font-semibold uppercase tracking-wider mb-2">
               {headline}
             </div>
-            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-2">
+            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2">
               {subheadline}
             </h3>
-            <p className="text-gray-200 text-sm leading-relaxed line-clamp-4">
+            <p className="text-gray-200 text-xs sm:text-sm leading-relaxed line-clamp-3 sm:line-clamp-4">
               {description}
             </p>
           </div>

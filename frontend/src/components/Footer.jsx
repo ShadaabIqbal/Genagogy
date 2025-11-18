@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import {
   Mail,
   Phone,
@@ -8,21 +9,51 @@ import {
   Linkedin,
   Instagram,
 } from "lucide-react";
+import ImageWithFallback from "@/components/ImageWithFallback";
 
 const Footer = () => {
+  // Preload footer logo for instant loading on navigation
+  useEffect(() => {
+    const img = new Image();
+    img.src = '/Genagogy_Logo.png';
+    img.loading = 'eager';
+  }, []);
+
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container-max section-padding">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand */}
+          {/* Brand - Enhanced Logo Section */}
           <div className="space-y-4">
-            <div className="flex items-center">
-              <img
-                src="/Genagogy_Logo.png"
-                alt="Genagogy Logo"
-                className="h-[100px] w-auto filter brightness-0"
-              />
-            </div>
+            <Link to="/" className="block group">
+              <div className="relative inline-block">
+                {/* Enhanced container with subtle background and border */}
+                <div className="relative h-[90px] w-auto min-w-[140px] flex-shrink-0 bg-primary rounded-lg p-3 border border-primary-foreground/10 shadow-lg group-hover:shadow-xl group-hover:border-primary-foreground/20 transition-all duration-300 overflow-hidden">
+                  {/* Background gradient for depth */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary-foreground/5 via-transparent to-primary-foreground/5 opacity-50"></div>
+                  
+                  <div className="relative h-full w-full flex items-center justify-center">
+                    <ImageWithFallback
+                      src="/Genagogy_Logo.png"
+                      alt="Genagogy Logo"
+                      className="h-full w-auto max-h-[70px] object-contain filter brightness-0 invert transition-transform duration-300 group-hover:scale-105"
+                      style={{
+                        display: "block",
+                        imageRendering: "crisp-edges",
+                        WebkitImageRendering: "crisp-edges",
+                      }}
+                      fallback="/placeholder.svg"
+                      loading="eager"
+                      fetchpriority="high"
+                      decoding="sync"
+                    />
+                  </div>
+                  
+                  {/* Subtle glow effect on hover */}
+                  <div className="absolute inset-0 rounded-lg bg-primary-foreground/0 group-hover:bg-primary-foreground/5 transition-colors duration-300 pointer-events-none"></div>
+                </div>
+              </div>
+            </Link>
             <p className="text-primary-foreground/80 text-sm leading-relaxed">
               Empowering students with industry-relevant skills and knowledge to
               succeed in their careers.

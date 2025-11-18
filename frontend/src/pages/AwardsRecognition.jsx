@@ -1,10 +1,11 @@
 // pages/AwardsRecognition.jsx
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AwardsHero from "../components/AwardHero";
 import AwardHighlight from "../components/AwardHighlight";
 import AwardGrid from "../components/AwardGrid";
 import AwardLongCard from "../components/AwardLongCard";
 import AwardVideoCard from "../components/AwardVideoCard";
+import Loader from "../components/Loader";
 
 // logos you provided
 const logos = [
@@ -46,6 +47,20 @@ const videos = [
 ];
 
 export default function AwardsRecognition() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time for images and videos
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 700);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <Loader fullScreen={true} />;
+  }
+
   return (
     <div className="min-h-screen pb-20 bg-gradient-to-b from-[#040405] to-[#07101a] text-white">
       <div className="pt-20">
@@ -73,12 +88,12 @@ export default function AwardsRecognition() {
         />
 
         {/* Recognitions list + print/electronic media */}
-        <section className="container-max my-8">
-          <div className="rounded-2xl p-6 border border-border/40 bg-card shadow-sm">
-            <h4 className="text-lg font-bold text-foreground mb-3">
+        <section className="container-max my-8 px-4 sm:px-6">
+          <div className="rounded-2xl p-4 sm:p-6 border border-border/40 bg-card shadow-sm">
+            <h4 className="text-base sm:text-lg font-bold text-foreground mb-3">
               Recognitions & Endorsements
             </h4>
-            <p className="text-muted-foreground mb-4">
+            <p className="text-sm sm:text-base text-muted-foreground mb-4">
               Technoglobe has been recognized by national and international
               organizations and covered extensively in print and electronic
               media.
@@ -86,10 +101,10 @@ export default function AwardsRecognition() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h5 className="text-sm font-semibold text-foreground mb-2">
+                <h5 className="text-xs sm:text-sm font-semibold text-foreground mb-2">
                   Presented by
                 </h5>
-                <ul className="text-sm text-muted-foreground space-y-1 list-inside">
+                <ul className="text-xs sm:text-sm text-muted-foreground space-y-1 list-inside">
                   <li>Mr. Om Birla, Speaker of the Lok Sabha</li>
                   <li>
                     Dr. Shashi Tharoor, Ex-Foreign Minister, Government of India
@@ -103,10 +118,10 @@ export default function AwardsRecognition() {
               </div>
 
               <div>
-                <h5 className="text-sm font-semibold text-foreground mb-2">
+                <h5 className="text-xs sm:text-sm font-semibold text-foreground mb-2">
                   Media Coverage
                 </h5>
-                <ul className="text-sm text-muted-foreground space-y-1">
+                <ul className="text-xs sm:text-sm text-muted-foreground space-y-1">
                   <li>
                     Featured in Dainik Bhaskar, Rajasthan Patrika, Punjab Kesari
                     & other leading newspapers
@@ -120,7 +135,7 @@ export default function AwardsRecognition() {
               </div>
             </div>
 
-            <div className="mt-6 text-sm text-muted-foreground">
+            <div className="mt-6 text-xs sm:text-sm text-muted-foreground">
               <strong>Presence:</strong> Recognized by Government of India; 100+
               locations across India; expanding to Canada, UK & UAE. Goal: 150+
               centers by year end.
@@ -129,10 +144,10 @@ export default function AwardsRecognition() {
         </section>
 
         {/* Video gallery */}
-        <section className="container-max my-8">
-          <h4 className="text-xl font-bold mb-4 invert">Video Highlights</h4>
+        <section className="container-max my-8 px-4 sm:px-6">
+          <h4 className="text-xl md:text-2xl font-bold mb-6 text-white text-center">Video Highlights</h4>
 
-          <div className="flex gap-8 justify-center overflow-x-auto pb-4 no-scrollbar">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 justify-items-center">
             {videos.map((v, idx) => (
               <AwardVideoCard
                 key={idx}
@@ -145,25 +160,25 @@ export default function AwardsRecognition() {
         </section>
 
         {/* CTA */}
-        <section className="container-max my-10 text-center">
-          <div className="rounded-2xl p-8 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
-            <h3 className="text-2xl font-bold mb-2 text-white">
+        <section className="container-max my-10 px-4 sm:px-6 text-center">
+          <div className="rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
+            <h3 className="text-xl sm:text-2xl font-bold mb-2 text-white">
               Join us and take the next step toward your Professional Success!
             </h3>
-            <p className="text-muted-foreground mb-4">
+            <p className="text-sm sm:text-base text-muted-foreground mb-4">
               Our courses are designed by industry experts, include AI-powered
               learning tools, and result in globally recognized certifications.
             </p>
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
               <a
                 href="/courses"
-                className="inline-flex items-center px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold shadow hover:scale-[1.02] transition"
+                className="inline-flex items-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg bg-primary text-primary-foreground font-semibold shadow hover:scale-[1.02] transition text-sm sm:text-base w-full sm:w-auto justify-center"
               >
                 Explore Courses
               </a>
               <a
                 href="/contact"
-                className="inline-flex items-center px-6 py-3 rounded-lg border border-border/40 text-primary font-semibold"
+                className="inline-flex items-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg border border-border/40 text-primary font-semibold text-sm sm:text-base w-full sm:w-auto justify-center"
               >
                 Contact Us
               </a>

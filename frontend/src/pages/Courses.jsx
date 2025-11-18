@@ -1,11 +1,21 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 import { Clock, Users, Award } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import ImageWithFallback from "@/components/ImageWithFallback";
+import CourseCardSkeleton from "@/components/skeletons/CourseCardSkeleton";
+import Loader from "@/components/Loader";
 
 const Courses = () => {
+  const [showLoader, setShowLoader] = useState(true);
+  const [showSkeleton, setShowSkeleton] = useState(false);
+  const [isContentReady, setIsContentReady] = useState(false);
+  const imagesLoadedRef = useRef(0);
+  const totalImagesRef = useRef(0);
+
+  // Define courses array first
   const courses = [
     {
       id: 1,
@@ -555,12 +565,146 @@ const Courses = () => {
     },
   ];
 
+  useEffect(() => {
+    // Step 1: Preload footer logo FIRST before anything else
+    const footerLogoPromise = new Promise((resolve) => {
+      const footerImg = new Image();
+      footerImg.onload = () => resolve();
+      footerImg.onerror = () => resolve(); // Continue even if fails
+      footerImg.src = '/Genagogy_Logo.png';
+    });
+
+    // Step 2: Wait for footer to be fully rendered in DOM with logo
+    const waitForFooterReady = () => {
+      return new Promise((resolve) => {
+        let attempts = 0;
+        const maxAttempts = 100; // 100 * 100ms = 10 seconds max
+        let consecutiveChecks = 0;
+        
+        const checkInterval = setInterval(() => {
+          attempts++;
+          const footer = document.querySelector('footer');
+          
+          if (footer && footer.offsetHeight > 0) {
+            // Check for footer logo image - must be fully loaded
+            const footerLogo = footer.querySelector('img[src*="Genagogy_Logo"]') || 
+                              footer.querySelector('img[alt*="Genagogy Logo"]') ||
+                              footer.querySelector('img[src="/Genagogy_Logo.png"]');
+            
+            // Check if footer logo is completely loaded (no white background)
+            let footerLogoLoaded = false;
+            if (footerLogo) {
+              const isLoaded = footerLogo.complete && 
+                              footerLogo.naturalWidth > 0 && 
+                              footerLogo.naturalHeight > 0 &&
+                              footerLogo.offsetWidth > 0 &&
+                              footerLogo.offsetHeight > 0;
+              
+              if (isLoaded) {
+                footerLogoLoaded = true;
+              }
+            }
+            
+            // Check if footer has all content rendered
+            const footerContent = footer.querySelector('.container-max');
+            const footerGrid = footer.querySelector('.grid');
+            const footerLinks = footer.querySelectorAll('a, ul');
+            const footerText = footer.querySelector('p');
+            
+            const footerContentReady = footerContent && 
+                                      footerGrid && 
+                                      footerLinks.length >= 4 && 
+                                      footerText;
+            
+            // Only resolve when BOTH logo is loaded AND content is ready
+            // AND we've had 5 consecutive successful checks (to ensure stability)
+            if (footerLogoLoaded && footerContentReady) {
+              consecutiveChecks++;
+              if (consecutiveChecks >= 5) {
+                clearInterval(checkInterval);
+                resolve();
+                return;
+              }
+            } else {
+              consecutiveChecks = 0; // Reset if check fails
+            }
+          }
+          
+          // Fallback: if max attempts reached, resolve anyway
+          if (attempts >= maxAttempts) {
+            clearInterval(checkInterval);
+            resolve();
+          }
+        }, 100); // Check every 100ms
+      });
+    };
+
+    // Step 3: Wait for footer logo to load AND footer to be ready
+    Promise.all([footerLogoPromise, waitForFooterReady()]).then(() => {
+      // Footer is now ready, show skeleton and start loading course images
+      setShowLoader(false);
+      setShowSkeleton(true);
+
+      // Step 4: Preload all course images
+      const imageUrls = courses.map((course) => {
+        if (course.image.startsWith("http")) {
+          return course.image;
+        }
+        if (course.image.startsWith("../../public/")) {
+          return course.image.replace("../../public/", "/");
+        }
+        return course.image;
+      });
+
+      totalImagesRef.current = imageUrls.length;
+      imagesLoadedRef.current = 0;
+
+      const loadPromises = imageUrls.map((url) => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => {
+            imagesLoadedRef.current++;
+            resolve();
+          };
+          img.onerror = () => {
+            imagesLoadedRef.current++;
+            resolve();
+          };
+          img.src = url;
+        });
+      });
+
+      // Step 5: Wait for course images to load with timeout fallback
+      const timeoutPromise = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 3000);
+      });
+
+      Promise.race([
+        Promise.all(loadPromises),
+        timeoutPromise
+      ]).then(() => {
+        // Additional delay to ensure smooth transition
+        setTimeout(() => {
+          setShowSkeleton(false);
+          setIsContentReady(true);
+        }, 400);
+      });
+    });
+  }, []);
+
   const getLevelColor = (level) => {
     if (level.includes("Beginner")) return "bg-green-100 text-green-800";
     if (level.includes("Intermediate")) return "bg-yellow-100 text-yellow-800";
     if (level.includes("Advanced")) return "bg-red-100 text-red-800";
     return "bg-primary-light text-primary";
   };
+
+  // Show custom loader first
+  if (showLoader) {
+    return <Loader fullScreen={true} />;
+  }
 
   return (
     <div className="min-h-screen">
@@ -597,47 +741,56 @@ const Courses = () => {
       {/* Courses Grid */}
       <section className="section-padding bg-background">
         <div className="container-max">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {courses.map((course, index) => (
-              <Card
-                key={course.id}
-                className="card-hover overflow-hidden animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <ImageWithFallback
-                    src={course.image}
-                    alt={course.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                    fallback="/placeholder.svg"
-                  />
-                  <div className="absolute top-4 right-4">
-                    <Badge className={getLevelColor(course.level)}>
-                      {course.level}
-                    </Badge>
+          {!isContentReady ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[...Array(courses.length)].map((_, index) => (
+                <CourseCardSkeleton key={index} />
+              ))}
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {courses.map((course, index) => (
+                <Card
+                  key={course.id}
+                  className="card-hover overflow-hidden animate-fade-in"
+                  style={{ animationDelay: `${index * 0.05}s` }}
+                >
+                  <div className="relative h-48 overflow-hidden bg-muted">
+                    <ImageWithFallback
+                      src={course.image}
+                      alt={course.title}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                      fallback="/placeholder.svg"
+                      loading="eager"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className={getLevelColor(course.level)}>
+                        {course.level}
+                      </Badge>
+                    </div>
                   </div>
-                </div>
 
-                <CardHeader>
-                  <CardTitle className="text-xl text-foreground">
-                    {course.title}
-                  </CardTitle>
-                </CardHeader>
+                  <CardHeader>
+                    <CardTitle className="text-xl text-foreground">
+                      {course.title}
+                    </CardTitle>
+                  </CardHeader>
 
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {course.description}
-                  </p>
+                  <CardContent className="space-y-4">
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {course.description}
+                    </p>
 
-                  <div className="pt-4">
-                    <Button asChild size="sm" className="w-full sm:w-auto">
-                      <Link to={`/courses/${course.id}`}>View Details</Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                    <div className="pt-4">
+                      <Button asChild size="sm" className="w-full sm:w-auto">
+                        <Link to={`/courses/${course.id}`}>View Details</Link>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

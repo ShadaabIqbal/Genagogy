@@ -15,16 +15,16 @@ export default function AwardGrid({ logos = [] }) {
 
   return (
     <>
-      <section className="container-max py-8">
-        <div className="bg-card rounded-2xl p-6 border border-border/40 shadow-inner">
-          <h4 className="text-xl font-bold text-foreground mb-4">
+      <section className="container-max py-8 px-4 sm:px-6">
+        <div className="bg-card rounded-2xl p-4 sm:p-6 border border-border/40 shadow-inner">
+          <h4 className="text-lg sm:text-xl font-bold text-foreground mb-3 sm:mb-4">
             Awards & Certificates
           </h4>
-          <p className="text-muted-foreground text-sm mb-6">
+          <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6">
             Selected recognitions & partner awards. Click to view larger.
           </p>
 
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 grid-rows-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4 md:gap-6 auto-rows-fr">
             {logos.map((src, i) => (
               <button
                 key={i}
@@ -47,7 +47,7 @@ export default function AwardGrid({ logos = [] }) {
                   src={src}
                   alt={`award-${i}`}
                   fallback="/placeholder.svg"
-                  className="max-h-20 object-contain group-hover:scale-110 transition-transform duration-300"
+                  className="max-h-16 sm:max-h-20 object-contain group-hover:scale-110 transition-transform duration-300"
                 />
 
                 {/* Zoom indicator */}

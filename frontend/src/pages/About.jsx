@@ -2,8 +2,21 @@ import { Target, Eye, Users, Award, BookOpen, Heart } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import ImageWithFallback from "@/components/ImageWithFallback";
+import Loader from "@/components/Loader";
 
 const About = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <Loader fullScreen={true} />;
+  }
   const faculty = [
     {
       name: "Dr. Sarah Johnson",

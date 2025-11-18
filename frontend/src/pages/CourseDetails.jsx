@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Clock,
   Users,
@@ -17,10 +17,12 @@ import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import CourseDetailsSkeleton from "@/components/skeletons/CourseDetailsSkeleton";
 
 const CourseDetails = () => {
   const { id } = useParams();
   const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,6 +32,16 @@ const CourseDetails = () => {
     phone: "",
     message: "",
   });
+
+  useEffect(() => {
+    // Simulate loading course data
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 600);
+
+    return () => clearTimeout(timer);
+  }, [id]);
 
   // Mock course data - in a real app, this would come from an API
   const courses = {
@@ -681,6 +693,10 @@ const CourseDetails = () => {
   };
 
   const course = courses[id];
+
+  if (isLoading) {
+    return <CourseDetailsSkeleton />;
+  }
 
   if (!course) {
     return (

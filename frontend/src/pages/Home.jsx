@@ -582,10 +582,10 @@ const Home = () => {
       </div>
 
       {/* Homepage Video Section */}
-      <section className="container-max my-8">
-        <h4 className="text-xl font-bold mb-4 invert">Video Highlights</h4>
+      <section className="container-max my-8 px-4 sm:px-6">
+        <h4 className="text-xl md:text-2xl font-bold mb-6 text-foreground text-center">Video Highlights</h4>
 
-        <div className="flex gap-8 justify-center overflow-x-auto pb-4 no-scrollbar">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 justify-items-center">
           {videos.map((v, idx) => (
             <AwardVideoCard
               key={idx}

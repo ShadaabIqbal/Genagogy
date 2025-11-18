@@ -3,6 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Critical resource hints - Load FIRST for instant logo display -->
+    <link rel="preconnect" href="/" />
+    <link rel="dns-prefetch" href="/" />
+    <link rel="preload" as="image" href="/Genagogy_Logo.png" fetchpriority="high" crossorigin="anonymous" />
+    <style>
+      /* Critical CSS: Preload logo via CSS for instant rendering */
+      .logo-preload {
+        background-image: url('/Genagogy_Logo.png');
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
+    
     <title>Genagogy - Professional Skill Development Institute</title>
     <meta name="description" content="Transform your career with industry-relevant skills at Genagogy. Expert-led courses in web development, data science, digital marketing, and more." />
     <meta name="author" content="Genagogy Institute" />
@@ -15,9 +32,6 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
-    <!-- Preload critical assets for faster loading -->
-    <link rel="preload" as="image" href="/Genagogy_Logo.png" fetchpriority="high" />
   </head>
 
   <body>
