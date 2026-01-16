@@ -990,20 +990,55 @@ const CourseDetails = () => {
                     course: course.title,
                     source: "course-details",
                   };
-                  const res = await fetch("/api/enrollments", {
+                  
+                  // Determine API URL - use proxy in dev, full URL in production
+                  const apiUrl = import.meta.env.PROD 
+                    ? `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/enrollments`
+                    : '/api/enrollments';
+                  
+                  const res = await fetch(apiUrl, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload),
                   });
+                  
                   if (!res.ok) {
                     const err = await res.json().catch(() => ({}));
-                    throw new Error(err.message || "Enrollment failed");
+                    const errorMessage = err.message || "Enrollment failed. Please try again.";
+                    toast({
+                      title: "Enrollment Failed",
+                      description: errorMessage,
+                      variant: "destructive",
+                    });
+                    return;
                   }
+                  
+                  const data = await res.json();
+                  
+                  // Check if response indicates success
+                  if (data.success === false) {
+                    toast({
+                      title: "Enrollment Failed",
+                      description: data.message || "Enrollment failed. Please try again.",
+                      variant: "destructive",
+                    });
+                    return;
+                  }
+                  
                   setFormData({ name: "", email: "", phone: "", message: "" });
                   setShowModal(false);
                   setShowSuccess(true);
+                  toast({
+                    title: "Enrollment Successful",
+                    description: data.message || "Thank you! We will contact you soon with next steps.",
+                  });
                 } catch (err) {
-                  // keep modal open; optionally you could show inline error text if desired
+                  console.error("Enrollment error:", err);
+                  toast({
+                    title: "Enrollment Failed",
+                    description: err.message || "Failed to submit enrollment. Please check your connection and try again.",
+                    variant: "destructive",
+                  });
                 } finally {
                   setIsSubmitting(false);
                 }

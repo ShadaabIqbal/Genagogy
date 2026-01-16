@@ -18,18 +18,31 @@ const envFiles = [envPath1, envPath2, envPath3];
 let loadedEnv = false;
 
 for (const envFile of envFiles) {
-  const result = dotenv.config({ path: envFile });
-  if (!result.error) {
-    console.log(`✓ Loaded .env from: ${envFile}`);
-    loadedEnv = true;
-    break;
+  try {
+    const fs = require("fs");
+    if (fs.existsSync(envFile)) {
+      const result = dotenv.config({ path: envFile });
+      if (!result.error) {
+        console.log(`✓ Loaded .env from: ${envFile}`);
+        loadedEnv = true;
+        break;
+      } else {
+        console.log(`⚠ Error loading .env from ${envFile}: ${result.error.message}`);
+      }
+    }
+  } catch (err) {
+    // Continue to next path
   }
 }
 
 if (!loadedEnv) {
   // Last resort: try default location
-  dotenv.config();
-  console.log(`⚠ Using default .env location`);
+  const result = dotenv.config();
+  if (!result.error) {
+    console.log(`✓ Loaded .env from default location`);
+  } else {
+    console.log(`⚠ No .env file found. Please create one in the backend directory.`);
+  }
 }
 
 // Log the paths checked
@@ -40,7 +53,7 @@ console.log(`📁 Current working directory: ${process.cwd()}`);
 // Log environment variables status (for debugging)
 console.log("📋 Environment variables check:");
 console.log(`   RESEND_API_KEY: ${process.env.RESEND_API_KEY ? "✓ Found" : "✗ Missing"}`);
-console.log(`   CONTACT_TO: ${process.env.CONTACT_TO || "Using default (iqbalshadaab@gmail.com)"}`);
+console.log(`   CONTACT_TO: ${process.env.CONTACT_TO || "Using default (contactgenagogy@gmail.com)"}`);
 
 const app = express();
 
@@ -54,7 +67,7 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok" });
 });
 
-// app.use("/api/enrollments", require("./routes/enrollmentRoutes"));
+app.use("/api/enrollments", require("./routes/enrollmentRoutes"));
 app.use("/api/contact", require("./routes/contactRoutes"));
 app.use("/api/student", require("./routes/studentRoutes"));
 

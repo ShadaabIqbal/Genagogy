@@ -15,7 +15,7 @@ const Footer = () => {
   // Preload footer logo for instant loading on navigation
   useEffect(() => {
     const img = new Image();
-    img.src = "/affliations/technoglobe_logo.png";
+    img.src = "/affliations/technoglobe_srinagar_logo.png";
     img.loading = "eager";
   }, []);
 
@@ -34,9 +34,9 @@ const Footer = () => {
 
                   <div className="relative h-full w-full flex items-center justify-center">
                     <ImageWithFallback
-                      src="/affliations/technoglobe_logo.png"
+                      src="/affliations/technoglobe_srinagar_logo.png"
                       alt="Technoglobe Logo"
-                      className="h-full w-auto max-h-[70px] object-contain filter brightness-0 invert transition-transform duration-300 group-hover:scale-105"
+                      className="h-full w-auto max-h-[140px] object-contain filter brightness-0 invert transition-transform duration-300 group-hover:scale-105"
                       style={{
                         display: "block",
                         imageRendering: "auto",
@@ -142,10 +142,9 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="h-4 w-4 text-primary-foreground/60 mt-0.5" />
                 <span className="text-primary-foreground/80 text-sm">
-                  Opposite Pohru Crossing Nowgam Bypass, NH 1, Srinagar,
-                  J&K-190015
+                  Behind Unacademy centre, Parraypora, Srinagar.
                   <a
-                    href="https://www.google.com/maps/dir//2RGJ%2BVRC+Vitasta+School+of+Law+and+Humanities,+Pohru+Crossing+Nowgam+Bye+Pass,+NH+1,+A,+Nowgam,+Srinagar,+Jammu+and+Kashmir+190015/@34.0272014,74.829342,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x38e18ef48a66c6a5:0x33ccf3bb0e71f387!2m2!1d74.8319608!2d34.0271714!3e0?entry=ttu"
+                    href="https://www.google.com/maps/search/Behind+Unacademy+centre,+Parraypora,+Srinagar"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="ml-1 text-primary-foreground hover:underline text-xs"

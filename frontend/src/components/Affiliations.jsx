@@ -20,7 +20,7 @@ const affiliations = [
     boxClass: "w-60 h-24 md:w-64",
     imgClass: "saturate-150 contrast-150 brightness-110",
   },
-  { name: "TechnoGlobe", src: "/affliations/technoglobe_logo.png" },
+  { name: "TechnoGlobe", src: "/affliations/technoglobe_srinagar_logo.png" },
   {
     name: "Certiport",
     src: "/affliations/certiport-logo-png_seeklogo-301744.png",

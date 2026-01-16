@@ -27,7 +27,7 @@ const Navbar = () => {
     // Preload the image directly in browser cache with highest priority
     // This runs immediately when component mounts
     const img = new Image();
-    img.src = "/affliations/technoglobe_logo.png";
+    img.src = "/affliations/technoglobe_srinagar_logo.png";
     img.loading = "eager";
 
     // Force immediate load
@@ -142,14 +142,14 @@ const Navbar = () => {
     >
       <div className="container-max">
         {/* Main Navbar Row */}
-        <div className="flex justify-between items-center min-h-[80px] py-3">
+        <div className="flex justify-between items-center min-h-[65px] py-2">
           {/* Enhanced Logo - Premium HD Technoglobe Logo */}
-          <Link to="/" className="flex items-center space-x-3 mr-8 md:mr-12">
-            <div className="relative h-10 md:h-11 lg:h-12 w-auto min-w-[44px] md:min-w-[50px] lg:min-w-[56px] flex-shrink-0">
+          <Link to="/" className="flex items-center space-x-2 mr-8 md:mr-12">
+            <div className="relative h-10 md:h-12 lg:h-14 w-auto min-w-[90px] md:min-w-[110px] lg:min-w-[130px] flex-shrink-0">
               <ImageWithFallback
-                src="/affliations/technoglobe_logo.png"
+                src="/affliations/technoglobe_srinagar_logo.png"
                 alt="Technoglobe Logo"
-                className="h-10 md:h-11 lg:h-12 w-auto object-contain brightness-110 contrast-110 saturate-110 drop-shadow-[0_2px_6px_rgba(59,130,246,0.22)] filter"
+                className="h-10 md:h-12 lg:h-14 w-auto object-contain brightness-110 contrast-110 saturate-110 drop-shadow-[0_2px_6px_rgba(59,130,246,0.22)] filter"
                 style={{
                   imageRendering: "auto",
                   WebkitImageRendering: "auto",

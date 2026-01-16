@@ -571,7 +571,7 @@ const Courses = () => {
       const footerImg = new Image();
       footerImg.onload = () => resolve();
       footerImg.onerror = () => resolve(); // Continue even if fails
-      footerImg.src = '/affliations/technoglobe_logo.png';
+      footerImg.src = '/affliations/technoglobe_srinagar_logo.png';
     });
 
     // Step 2: Wait for footer to be fully rendered in DOM with logo
@@ -587,9 +587,9 @@ const Courses = () => {
           
           if (footer && footer.offsetHeight > 0) {
             // Check for footer logo image - must be fully loaded
-            const footerLogo = footer.querySelector('img[src*="technoglobe_logo"]') || 
+            const footerLogo = footer.querySelector('img[src*="technoglobe_srinagar_logo"]') || 
                               footer.querySelector('img[alt*="Technoglobe Logo"]') ||
-                              footer.querySelector('img[src="/affliations/technoglobe_logo.png"]');
+                              footer.querySelector('img[src="/affliations/technoglobe_srinagar_logo.png"]');
             
             // Check if footer logo is completely loaded (no white background)
             let footerLogoLoaded = false;

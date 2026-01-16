@@ -8,7 +8,7 @@ const FranchiseBadge = () => {
         {/* HD Logo */}
         <div className="flex-shrink-0 w-36 h-36 md:w-48 md:h-48">
           <img
-            src="../../public/affliations/technoglobe_logo.png"
+            src="/affliations/technoglobe_srinagar_logo.png"
             alt="Technoglobe Logo"
             className="w-full h-full object-contain"
           />

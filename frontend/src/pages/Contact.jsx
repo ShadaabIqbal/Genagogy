@@ -107,7 +107,7 @@ const Contact = () => {
       icon: MapPin,
       title: "Visit Us",
       details: [
-        "Opposite Pohru Crossing Nowgam Bypass, NH 1, Srinagar, J&K-190015",
+        "Behind Unacademy centre, Parraypora, Srinagar.",
       ],
     },
     {
@@ -295,11 +295,10 @@ const Contact = () => {
         <div className="space-y-4">
           <h2 className="text-2xl font-bold">Visit Us</h2>
           <p className="text-gray-600">
-            Our institute is located inside <strong>Vitasta School of Law and Humanities</strong>, 
-            Opposite Pohru Crossing, Nowgam Bypass, Srinagar, J&K - 190015
+            Our institute is located at <strong>Behind Unacademy centre, Parraypora, Srinagar.</strong>
           </p>
           <a
-            href="https://www.google.com/maps/dir//2RGJ%2BVRC+Vitasta+School+of+Law+and+Humanities,+Pohru+Crossing+Nowgam+Bye+Pass,+NH+1,+A,+Nowgam,+Srinagar,+Jammu+and+Kashmir+190015/@34.0272014,74.829342,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x38e18ef48a66c6a5:0x33ccf3bb0e71f387!2m2!1d74.8319608!2d34.0271714!3e0?entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D"
+            href="https://www.google.com/maps/search/Behind+Unacademy+centre,+Parraypora,+Srinagar"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg shadow hover:bg-primary/90 transition"
@@ -312,7 +311,7 @@ const Contact = () => {
         {/* Google Map Embed */}
         <div className="rounded-lg overflow-hidden shadow">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.6497085374785!2d74.82934197454964!3d34.027201419054215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e18ef48a66c6a5%3A0x33ccf3bb0e71f387!2sVitasta%20School%20of%20Law%20and%20Humanities!5e0!3m2!1sen!2sin!4v1759567511410!5m2!1sen!2sin"
+            src="https://www.google.com/maps?q=Behind+Unacademy+centre,+Parraypora,+Srinagar&output=embed"
             width="100%"
             height="350"
             style={{ border: 0 }}

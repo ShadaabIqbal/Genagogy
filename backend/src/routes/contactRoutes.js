@@ -4,7 +4,7 @@ const { Resend } = require("resend");
 const router = express.Router();
 
 // Email configuration
-const toEmail = process.env.CONTACT_TO || "iqbalshadaab@gmail.com";
+const toEmail = process.env.CONTACT_TO || "contactgenagogy@gmail.com";
 const resendApiKey = process.env.RESEND_API_KEY;
 
 /**

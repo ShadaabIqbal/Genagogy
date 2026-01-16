@@ -201,7 +201,7 @@ const Home = () => {
   return (
     <div className="min-h-screen w-full overflow-x-hidden">
       {/* Hero Section with Enhanced Animations & UI */}
-      <section className="relative hero-gradient text-primary-foreground overflow-hidden">
+      <section className="relative hero-gradient text-primary-foreground overflow-hidden pt-[65px]">
         {/* Enhanced Background with Overlay */}
         <div className="absolute inset-0">
           <ImageWithFallback

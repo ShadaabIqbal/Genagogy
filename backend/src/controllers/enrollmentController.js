@@ -3,12 +3,53 @@ const Enrollment = require("../models/Enrollment");
 async function createEnrollment(req, res, next) {
   try {
     const { name, email, phone, course, message, source } = req.body;
+    
+    // Validation
     if (!name || !email || !phone || !course) {
-      return res.status(400).json({ message: "name, email, phone, and course are required" });
+      return res.status(400).json({ 
+        success: false,
+        message: "Name, email, phone, and course are required fields." 
+      });
     }
-    const enrollment = await Enrollment.create({ name, email, phone, course, message, source });
-    return res.status(201).json(enrollment);
+
+    // Trim whitespace
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+    const trimmedPhone = phone.trim();
+    const trimmedCourse = course.trim();
+    const trimmedMessage = (message || "").trim();
+
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(trimmedEmail)) {
+      return res.status(400).json({ 
+        success: false,
+        message: "Invalid email format." 
+      });
+    }
+
+    const enrollment = await Enrollment.create({ 
+      name: trimmedName, 
+      email: trimmedEmail, 
+      phone: trimmedPhone, 
+      course: trimmedCourse, 
+      message: trimmedMessage, 
+      source 
+    });
+    
+    return res.status(201).json({
+      success: true,
+      message: "Enrollment submitted successfully!",
+      enrollment
+    });
   } catch (error) {
+    // Handle duplicate key errors or validation errors
+    if (error.code === 11000) {
+      return res.status(400).json({ 
+        success: false,
+        message: "You have already enrolled in this course." 
+      });
+    }
     return next(error);
   }
 }
