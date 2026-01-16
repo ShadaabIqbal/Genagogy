@@ -15,8 +15,8 @@ const Footer = () => {
   // Preload footer logo for instant loading on navigation
   useEffect(() => {
     const img = new Image();
-    img.src = '/Genagogy_Logo.png';
-    img.loading = 'eager';
+    img.src = "/affliations/technoglobe_logo.png";
+    img.loading = "eager";
   }, []);
 
   return (
@@ -31,16 +31,16 @@ const Footer = () => {
                 <div className="relative h-[90px] w-auto min-w-[140px] flex-shrink-0 bg-primary rounded-lg p-3 border border-primary-foreground/10 shadow-lg group-hover:shadow-xl group-hover:border-primary-foreground/20 transition-all duration-300 overflow-hidden">
                   {/* Background gradient for depth */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary-foreground/5 via-transparent to-primary-foreground/5 opacity-50"></div>
-                  
+
                   <div className="relative h-full w-full flex items-center justify-center">
                     <ImageWithFallback
-                      src="/Genagogy_Logo.png"
-                      alt="Genagogy Logo"
+                      src="/affliations/technoglobe_logo.png"
+                      alt="Technoglobe Logo"
                       className="h-full w-auto max-h-[70px] object-contain filter brightness-0 invert transition-transform duration-300 group-hover:scale-105"
                       style={{
                         display: "block",
-                        imageRendering: "crisp-edges",
-                        WebkitImageRendering: "crisp-edges",
+                        imageRendering: "auto",
+                        WebkitImageRendering: "auto",
                       }}
                       fallback="/placeholder.svg"
                       loading="eager"
@@ -48,7 +48,7 @@ const Footer = () => {
                       decoding="sync"
                     />
                   </div>
-                  
+
                   {/* Subtle glow effect on hover */}
                   <div className="absolute inset-0 rounded-lg bg-primary-foreground/0 group-hover:bg-primary-foreground/5 transition-colors duration-300 pointer-events-none"></div>
                 </div>
@@ -62,6 +62,7 @@ const Footer = () => {
               <a
                 href="https://www.facebook.com/groups/370387843069813/?ref=share&mibextid=NSMWBT"
                 className="text-primary-foreground/60 hover:text-primary-foreground transition-colors"
+                target="_blank"
               >
                 <Facebook className="h-5 w-5" />
               </a>
@@ -172,7 +173,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
           <p className="text-primary-foreground/60 text-sm">
-            © 2025 Genagogy Institute. All rights reserved.
+            © 2025 Technoglobe Institute. All rights reserved.
           </p>
         </div>
       </div>

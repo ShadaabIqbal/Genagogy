@@ -78,11 +78,11 @@ const About = () => {
         <div className="container-max">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              About Genagogy
+              About Technoglobe
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
               Founded with a mission to bridge the gap between academic learning and industry requirements, 
-              Genagogy has been at the forefront of skill development education for over a decade.
+              Technoglobe has been at the forefront of skill development education for over a decade.
             </p>
           </div>
         </div>
@@ -127,7 +127,7 @@ const About = () => {
       <section className="section-padding bg-primary-light">
         <div className="container-max">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Why Choose Genagogy?</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-4">Why Choose Technoglobe?</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               We're not just another training institute. We're your partners in professional transformation.
             </p>
@@ -174,7 +174,7 @@ const About = () => {
                   <div className="text-center md:text-left">
                     <h3 className="text-2xl font-semibold text-foreground mb-3">Center Director</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      "As the Center Director of Genagogy Institute, I would like to express my sincere gratitude to our partner, Technoglobe, for their constant support, expert guidance, and valuable resources. Through their structured training programs, updated curriculum, and strong placement support, we at Genagogy have been able to deliver quality education and instill confidence in our students. Together, we have created a positive learning environment that focuses on skill development and career readiness. It is a privilege to be part of the Technoglobe network, and at Genagogy, we remain committed to empowering youth in Srinagar with industry-relevant training and career opportunities."
+                      "As the Center Director of Technoglobe Institute, I would like to express my sincere gratitude to our partner, Technoglobe, for their constant support, expert guidance, and valuable resources. Through their structured training programs, updated curriculum, and strong placement support, we at Technoglobe have been able to deliver quality education and instill confidence in our students. Together, we have created a positive learning environment that focuses on skill development and career readiness. It is a privilege to be part of the Technoglobe network, and at Technoglobe, we remain committed to empowering youth in Srinagar with industry-relevant training and career opportunities."
                     </p>
                   </div>
                 </div>

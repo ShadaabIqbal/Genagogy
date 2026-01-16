@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-// removed toast import to avoid bottom popups
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -18,42 +17,78 @@ const Contact = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [errorText, setErrorText] = useState("");
-  // previewUrl removed; we won't show development previews
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorText("");
+    
+    // Validation
     if (!formData.name || !formData.email || !formData.phone || !formData.course) {
-      setErrorText("Please fill in all required fields.");
+      setErrorText("Please fill in all required fields (Name, Email, Phone, and Course).");
       return;
     }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setErrorText("Please enter a valid email address.");
+      return;
+    }
+
     try {
       setSubmitting(true);
-      setErrorText("");
-      const res = await fetch("http://localhost:5000/api/contact", {
+      
+      // Determine API URL - use proxy in dev, full URL in production
+      const apiUrl = import.meta.env.PROD 
+        ? `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/contact`
+        : '/api/contact';
+
+      const res = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.email, // Formspree will use this as Reply-To
-          phone: formData.phone,
-          course: formData.course,
-          message: formData.message,
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim(),
+          course: formData.course.trim(),
+          message: formData.message.trim() || "",
         }),
       });
-      const body = await res.json().catch(() => ({}));
-      if (!res.ok || body?.ok === false) {
-        const msg = body?.message || body?.errors?.map?.(e => e.message)?.join?.("; ") || "Failed to send message";
-        throw new Error(msg);
+
+      // Handle network errors
+      if (!res.ok) {
+        let errorMessage = "Failed to send message. Please try again.";
+        try {
+          const errorData = await res.json();
+          errorMessage = errorData.message || errorData.details || errorMessage;
+        } catch (parseError) {
+          // If response is not JSON, use status text
+          errorMessage = res.statusText || errorMessage;
+        }
+        throw new Error(errorMessage);
       }
+
+      const data = await res.json();
+      
+      // Check if response indicates success
+      if (data.success === false) {
+        throw new Error(data.message || "Failed to send message.");
+      }
+
+      // Success!
       setFormData({ name: "", email: "", phone: "", course: "", message: "" });
       setShowSuccess(true);
+      
     } catch (err) {
-      setErrorText(err?.message || "Failed to send message, please try again.");
+      console.error("Contact form error:", err);
+      setErrorText(
+        err.message || "Failed to send message. Please check your connection and try again."
+      );
+    } finally {
+      setSubmitting(false);
     }
-    finally { setSubmitting(false); }
   };
 
   const handleChange = (e) => {
@@ -61,6 +96,10 @@ const Contact = () => {
       ...prev,
       [e.target.name]: e.target.value
     }));
+    // Clear error when user starts typing
+    if (errorText) {
+      setErrorText("");
+    }
   };
 
   const contactInfo = [
@@ -127,6 +166,7 @@ const Contact = () => {
                           onChange={handleChange}
                           required
                           placeholder="Enter your full name"
+                          disabled={submitting}
                         />
                       </div>
                       <div className="space-y-2">
@@ -139,52 +179,58 @@ const Contact = () => {
                           onChange={handleChange}
                           required
                           placeholder="Enter your email"
+                          disabled={submitting}
                         />
                       </div>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="phone">Phone Number</Label>
+                        <Label htmlFor="phone">Phone Number *</Label>
                         <Input
                           id="phone"
                           name="phone"
                           type="tel"
                           value={formData.phone}
                           onChange={handleChange}
+                          required
                           placeholder="Enter your phone number"
+                          disabled={submitting}
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="course">Course of Interest</Label>
+                        <Label htmlFor="course">Course of Interest *</Label>
                         <Input
                           id="course"
                           name="course"
                           value={formData.course}
                           onChange={handleChange}
+                          required
                           placeholder="Which course interests you?"
+                          disabled={submitting}
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message">Message *</Label>
+                      <Label htmlFor="message">Message</Label>
                       <Textarea
                         id="message"
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        required
                         rows={6}
                         placeholder="Tell us more about your goals and how we can help..."
+                        disabled={submitting}
                       />
                     </div>
 
                     {errorText && (
-                      <div className="text-sm text-destructive bg-destructive/10 border border-destructive/30 rounded p-2">
-                        {errorText}
+                      <div className="text-sm text-destructive bg-destructive/10 border border-destructive/30 rounded-md p-3">
+                        <strong>Error:</strong> {errorText}
                       </div>
                     )}
+                    
                     <Button type="submit" size="lg" className="w-full" disabled={submitting}>
                       <Send className="mr-2 h-4 w-4" />
                       {submitting ? "Sending..." : "Send Message"}
@@ -348,8 +394,8 @@ const Contact = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/50" onClick={() => setShowSuccess(false)} />
           <div className="relative bg-card text-card-foreground w-full max-w-md rounded-lg shadow-large border border-border p-6 animate-fade-in">
-            <h3 className="text-xl font-semibold mb-2">Message sent</h3>
-            <p className="text-muted-foreground mb-4">Thank you! We'll get back to you shortly.</p>
+            <h3 className="text-xl font-semibold mb-2">Message Sent Successfully!</h3>
+            <p className="text-muted-foreground mb-4">Thank you for contacting us. We'll get back to you shortly.</p>
             <div className="flex justify-end">
               <Button onClick={() => setShowSuccess(false)}>Close</Button>
             </div>

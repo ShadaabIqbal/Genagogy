@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import ImageWithFallback from "@/components/ImageWithFallback";
 import Affiliations from "@/components/Affiliations";
+import INIFDBanner from "@/components/INIFDBanner";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -114,11 +115,11 @@ const Home = () => {
 
   const testimonials = [
     {
-      name: "Yash Hemrajani",
-      role: "Accounting Professional",
-      text: "I have completed my Accounting Professional Program from Technoglobe Gopalpura Branch. The faculty supported me well and guided me in my doubts. Provide me best subject guidance and help me out in my interview preparation.",
+      name: "Snober",
+      role: "Data Science",
+      text: "Learning Data Science at Technoglobe has been a fantastic experience. The instructors explain concepts clearly and help us apply them through real-world projects. I feel my skills growing steadily every day.",
       rating: 5,
-      image: "../../public/studentTestimonials/yash.webp",
+      image: "../../public/studentTestimonials/Student-2.jpg",
     },
     {
       name: "Nizam-ur-Rehman",
@@ -128,13 +129,6 @@ const Home = () => {
       image: "../../public/studentTestimonials/Student-1.jpg",
     },
     {
-      name: "Harsh Garg",
-      role: "Digital Marketing",
-      text: "I joined the Digital Marketing program with many doubts, but the faculty at Technoglobe have been incredibly supportive throughout. The sessions are engaging, and I feel my skills improving every day.",
-      rating: 5,
-      image: "../../public/studentTestimonials/harsh.webp",
-    },
-    {
       name: "Faizan-ul-Haq",
       role: "Graphic Designing",
       text: "I am currently pursuing Graphic Designing at Technoglobe. The faculty are very encouraging and help me enhance my creativity. The assignments and feedback make learning practical and enjoyable.",
@@ -142,18 +136,25 @@ const Home = () => {
       image: "../../public/studentTestimonials/Student-3.jpg",
     },
     {
+      name: "Yash Hemrajani",
+      role: "Accounting Professional",
+      text: "I have completed my Accounting Professional Program from Technoglobe Gopalpura Branch. The faculty supported me well and guided me in my doubts. Provide me best subject guidance and help me out in my interview preparation.",
+      rating: 5,
+      image: "../../public/studentTestimonials/yash.webp",
+    },
+    {
+      name: "Harsh Garg",
+      role: "Digital Marketing",
+      text: "I joined the Digital Marketing program with many doubts, but the faculty at Technoglobe have been incredibly supportive throughout. The sessions are engaging, and I feel my skills improving every day.",
+      rating: 5,
+      image: "../../public/studentTestimonials/harsh.webp",
+    },
+    {
       name: "Mula Ram",
       role: "Data Analyst",
       text: "I am currently learning Data Analysis at Technoglobe, and the experience has been amazing. The instructors are patient and always ready to help. The practical approach makes learning enjoyable and effective.",
       rating: 5,
       image: "../../public/studentTestimonials/mula.webp",
-    },
-    {
-      name: "Snober",
-      role: "Data Science",
-      text: "Learning Data Science at Technoglobe has been a fantastic experience. The instructors explain concepts clearly and help us apply them through real-world projects. I feel my skills growing steadily every day.",
-      rating: 5,
-      image: "../../public/studentTestimonials/Student-2.jpg",
     },
   ];
 
@@ -212,6 +213,7 @@ const Home = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-primary/10 to-transparent"></div>
         </div>
 
+
         <div className="relative container-max section-padding">
           <div className="max-w-3xl animate-fade-in will-change-[opacity,transform]">
             <h1
@@ -220,7 +222,7 @@ const Home = () => {
             >
               Shape Your Future with
               <span className="block text-primary-light transform transition-all duration-500 hover:scale-105 hover:drop-shadow-[0_6px_20px_rgba(255,255,255,0.4)] inline-block will-change-transform">
-                Genagogy
+                Technoglobe
               </span>
             </h1>
             <p
@@ -260,7 +262,7 @@ const Home = () => {
       </section>
 
       {/* Highlights Section with Enhanced Animations */}
-      <section className="section-padding bg-primary-light">
+      <section className="section-padding bg-primary-light relative overflow-hidden">
         <div className="container-max">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {highlights.map((item, index) => (
@@ -283,6 +285,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* INIFD Banner Section */}
+      <INIFDBanner />
 
       <Affiliations />
 
@@ -515,7 +520,9 @@ const Home = () => {
             .testimonial-arrow svg {
               width: 18px !important;
               height: 18px !important;
-            }
+            }import Reveal from './../components/Reveal';
+import FloatingDecor from './../components/FloatingDecor';
+
           }
         `}</style>
       </section>
@@ -583,7 +590,9 @@ const Home = () => {
 
       {/* Homepage Video Section */}
       <section className="container-max my-8 px-4 sm:px-6">
-        <h4 className="text-xl md:text-2xl font-bold mb-6 text-foreground text-center">Video Highlights</h4>
+        <h4 className="text-xl md:text-2xl font-bold mb-6 text-foreground text-center">
+          Video Highlights
+        </h4>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 justify-items-center">
           {videos.map((v, idx) => (
@@ -1065,7 +1074,7 @@ const Home = () => {
             style={{ animationDelay: "0.2s" }}
           >
             Join thousands of successful professionals who started their journey
-            at Genagogy.
+            at Technoglobe.
           </p>
           <Button
             size="lg"

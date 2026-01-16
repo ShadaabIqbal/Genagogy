@@ -38,7 +38,7 @@ const StaffDashboard = () => {
     {
       id: 1,
       name: "John Anderson",
-      email: "john.anderson@genagogy.com",
+      email: "john.anderson@technoglobe.com",
       phone: "+1 (555) 111-2233",
       role: "admin",
       department: "Administration",
@@ -49,7 +49,7 @@ const StaffDashboard = () => {
     {
       id: 2,
       name: "Sarah Williams",
-      email: "sarah.williams@genagogy.com", 
+      email: "sarah.williams@technoglobe.com", 
       phone: "+1 (555) 222-3344",
       role: "instructor",
       department: "Web Development",
@@ -60,7 +60,7 @@ const StaffDashboard = () => {
     {
       id: 3,
       name: "Mike Johnson",
-      email: "mike.johnson@genagogy.com",
+      email: "mike.johnson@technoglobe.com",
       phone: "+1 (555) 333-4455",
       role: "instructor", 
       department: "Data Science",

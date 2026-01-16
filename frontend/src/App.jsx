@@ -76,7 +76,7 @@ const AppContent = () => {
         }`}
       >
         <Navbar />
-        <main className="flex-1 w-full overflow-x-hidden pt-20">
+        <main className="flex-1 w-full overflow-x-hidden pt-[80px]">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

@@ -59,7 +59,7 @@ const Loader = ({ fullScreen = true, size = "default" }) => {
         {fullScreen && (
           <div className="mt-2">
             <p className="text-sm text-muted-foreground font-light tracking-wide animate-fade-in-delayed">
-              Genagogy
+              Technoglobe
             </p>
           </div>
         )}

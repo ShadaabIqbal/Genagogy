@@ -33,7 +33,7 @@ export default function AwardsHero({
           </h1>
           <p className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto px-2">
             {subtitle ||
-              "Celebrating excellence, achievements, and the milestones that define Genagogy's journey of impact."}
+              "Celebrating excellence, achievements, and the milestones that define Technoglobe's journey of impact."}
           </p>
         </div>
       </div>

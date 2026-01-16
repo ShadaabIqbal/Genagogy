@@ -33,7 +33,7 @@ const StaffLogin = () => {
         }));
         toast({ title: "Login Successful!", description: "Welcome to the admin dashboard." });
         navigate("/admin");
-      } else if (formData.email === "staff@genagogy.edu" && formData.password === "password") {
+      } else if (formData.email === "staff@technoglobe.edu" && formData.password === "password") {
         // Demo staff -> redirect to Staff Dashboard
         localStorage.setItem("staffLoggedIn", "true");
         localStorage.setItem("staffUser", JSON.stringify({
