@@ -1,41 +1,44 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- Critical resource hints - Load FIRST for instant logo display -->
-    <link rel="preconnect" href="/" />
-    <link rel="dns-prefetch" href="/" />
-    <link rel="preload" as="image" href="/affliations/technoglobe_srinagar_logo.png" fetchpriority="high" crossorigin="anonymous" />
-    <style>
-      /* Critical CSS: Preload logo via CSS for instant rendering */
-      .logo-preload {
-        background-image: url('/affliations/technoglobe_srinagar_logo.png');
-        position: absolute;
-        width: 0;
-        height: 0;
-        opacity: 0;
-        pointer-events: none;
-      }
-    </style>
-    
-    <title>Technoglobe - Professional Skill Development Institute</title>
-    <meta name="description" content="Transform your career with industry-relevant skills at Technoglobe. Expert-led courses in web development, data science, digital marketing, and more." />
-    <meta name="author" content="Technoglobe Institute" />
 
-    <meta property="og:title" content="Technoglobe - Professional Skill Development Institute" />
-    <meta property="og:description" content="Transform your career with industry-relevant skills at Technoglobe. Expert-led courses in web development, data science, digital marketing, and more." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+  <!-- Critical resource hints - Load FIRST for instant logo display -->
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="/" />
+  <link rel="dns-prefetch" href="/" />
+  <link rel="preload" as="image" href="/affliations/technoglobe_srinagar_logo.png" fetchpriority="high"
+    crossorigin="anonymous" />
+  <style>
+    /* Critical CSS: Preload logo via CSS for instant rendering */
+    .logo-preload {
+      background-image: url('/affliations/technoglobe_srinagar_logo.png');
+      position: absolute;
+      width: 0;
+      height: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  <title>Technoglobe - Professional Skill Development Institute</title>
+  <meta name="description"
+    content="Transform your career with industry-relevant skills at Technoglobe. Expert-led courses in web development, data science, digital marketing, and more." />
+  <meta name="author" content="Technoglobe Institute" />
+
+  <meta property="og:title" content="Technoglobe - Professional Skill Development Institute" />
+  <meta property="og:description"
+    content="Transform your career with industry-relevant skills at Technoglobe. Expert-led courses in web development, data science, digital marketing, and more." />
+  <meta property="og:type" content="website" />
+
+
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>
