@@ -17,7 +17,7 @@ const Contact = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [errorText, setErrorText] = useState("");
-
+  console.log("api", import.meta.env.VITE_API_URL);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorText("");
@@ -39,9 +39,7 @@ const Contact = () => {
       setSubmitting(true);
       
       // Determine API URL - use proxy in dev, full URL in production
-      const apiUrl = import.meta.env.PROD 
-        ? `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/contact`
-        : '/api/contact';
+      const apiUrl = "https://genagogy.onrender.com/api/contact";
 
       const res = await fetch(apiUrl, {
         method: "POST",

@@ -990,18 +990,16 @@ const CourseDetails = () => {
                     course: course.title,
                     source: "course-details",
                   };
-                  
+
                   // Determine API URL - use proxy in dev, full URL in production
-                  const apiUrl = import.meta.env.PROD 
-                    ? `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/enrollments`
-                    : '/api/enrollments';
-                  
+                  const apiUrl = "https://genagogy.onrender.com/api/enrollments";
+
                   const res = await fetch(apiUrl, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload),
                   });
-                  
+
                   if (!res.ok) {
                     const err = await res.json().catch(() => ({}));
                     const errorMessage = err.message || "Enrollment failed. Please try again.";
@@ -1012,9 +1010,9 @@ const CourseDetails = () => {
                     });
                     return;
                   }
-                  
+
                   const data = await res.json();
-                  
+
                   // Check if response indicates success
                   if (data.success === false) {
                     toast({
@@ -1024,7 +1022,7 @@ const CourseDetails = () => {
                     });
                     return;
                   }
-                  
+
                   setFormData({ name: "", email: "", phone: "", message: "" });
                   setShowModal(false);
                   setShowSuccess(true);
