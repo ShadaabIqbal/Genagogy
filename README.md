@@ -1,73 +1,94 @@
-# Welcome to your Lovable project
+# 🌐 Technoglobe – International Education Platform
 
-## Project info
+Technoglobe is a **modern, professional web platform** built for an **international teaching institute**.  
+It provides a complete digital presence where students can **explore courses, enroll, learn about the institute, and get in touch** — all through a smooth, responsive, and user-friendly interface.
 
-**URL**: https://lovable.dev/projects/5bf83b15-c0ad-422e-95dc-eb08476e92b6
+The project focuses on **performance, scalability, clean UI, and real-world production standards**.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🚀 Live Demo
+🔗 **Frontend:** _(Netlify URL will be added)_  
+🔗 **Backend:** _(Render URL will be added)_
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5bf83b15-c0ad-422e-95dc-eb08476e92b6) and start prompting.
+## 🧩 Key Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- 🎓 **Courses Exploration**
+  - Browse multiple professional courses
+  - Detailed course pages with curriculum and highlights
 
-**Use your preferred IDE**
+- 📝 **Course Enrollment**
+  - Students can enroll in courses
+  - Proper form validation and API integration
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- 📞 **Contact & Inquiry**
+  - Contact forms for student queries
+  - Direct communication with the institute
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- 🏫 **Institute Information**
+  - About Technoglobe
+  - Affiliations and partners
+  - Student testimonials
 
-Follow these steps:
+- 📱 **Fully Responsive Design**
+  - Optimized for mobile, tablet, and desktop devices
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- ⚡ **High Performance UI**
+  - Smooth scrolling
+  - Modern animations
+  - Fast load times powered by Vite
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🧭 Pages Included
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+- Home / Landing Page  
+- Courses Listing  
+- Course Details  
+- Enrollment Page  
+- Contact Us  
+- About Us  
+- Testimonials  
+- Affiliations & Partners  
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🛠️ Tech Stack
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
+### **Frontend**
+- React 18
 - Vite
-- TypeScript
-- React
-- shadcn-ui
+- React Router DOM
 - Tailwind CSS
+- shadcn/ui
+- Radix UI
+- Lucide React Icons
 
-## How can I deploy this project?
+### **Forms & Validation**
+- React Hook Form
+- Zod
+- @hookform/resolvers
 
-Simply open [Lovable](https://lovable.dev/projects/5bf83b15-c0ad-422e-95dc-eb08476e92b6) and click on Share -> Publish.
+### **State & Data Management**
+- @tanstack/react-query
 
-## Can I connect a custom domain to my Lovable project?
+### **UI & UX Enhancements**
+- Swiper
+- Slick Carousel
+- Embla Carousel
+- Sonner (toast notifications)
+- Smooth scrolling using Lenis
+- Tailwind animations
 
-Yes, you can!
+### **Charts & Visualization**
+- Recharts
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 📁 Project Setup
+
+### Install dependencies
+```bash
+npm install
